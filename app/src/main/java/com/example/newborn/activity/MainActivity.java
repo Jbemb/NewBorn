@@ -1,8 +1,10 @@
-package com.example.newborn;
+package com.example.newborn.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.example.newborn.R;
 
 public class MainActivity extends AppCompatActivity {
 
