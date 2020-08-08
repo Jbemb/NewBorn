@@ -17,14 +17,14 @@ public class Meal implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private int baby;
+    private String baby;
     private LocalDateTime time;
     private int quantity;
     // right = true, left = false
     private boolean rightBreast;
 
     //constructors
-    public Meal(int id, int baby, LocalDateTime time, int quantity, boolean rightBreast) {
+    public Meal(int id, String baby, LocalDateTime time, int quantity, boolean rightBreast) {
         this.id = id;
         this.baby = baby;
         this.time = time;
@@ -32,20 +32,20 @@ public class Meal implements Parcelable {
         this.rightBreast = rightBreast;
     }
 
-    public Meal(int id, int baby, LocalDateTime time) {
+    public Meal(int id, String baby, LocalDateTime time) {
         this.id = id;
         this.baby = baby;
         this.time = time;
     }
 
-    public Meal(int id, int baby, LocalDateTime time, int quantity) {
+    public Meal(int id, String baby, LocalDateTime time, int quantity) {
         this.id = id;
         this.baby = baby;
         this.time = time;
         this.quantity = quantity;
     }
 
-    public Meal(int id, int baby, LocalDateTime time, boolean rightBreast) {
+    public Meal(int id, String baby, LocalDateTime time, boolean rightBreast) {
         this.id = id;
         this.baby = baby;
         this.time = time;
@@ -54,7 +54,7 @@ public class Meal implements Parcelable {
 
     protected Meal(Parcel in) {
         id = in.readInt();
-        baby = in.readInt();
+        baby = in.readString();
         quantity = in.readInt();
         rightBreast = in.readByte() != 0;
     }
@@ -80,11 +80,11 @@ public class Meal implements Parcelable {
         this.id = id;
     }
 
-    public int getBaby() {
+    public String getBaby() {
         return baby;
     }
 
-    public void setBaby(int baby) {
+    public void setBaby(String baby) {
         this.baby = baby;
     }
 
@@ -131,7 +131,7 @@ public class Meal implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
-        parcel.writeInt(baby);
+        parcel.writeString(baby);
         parcel.writeInt(quantity);
         parcel.writeByte((byte) (rightBreast ? 1 : 0));
     }

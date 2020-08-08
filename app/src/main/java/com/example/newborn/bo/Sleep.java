@@ -16,19 +16,19 @@ public class Sleep implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private int baby;
+    private String baby;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
     //constructors
-    public Sleep(int id, int baby, LocalDateTime startTime, LocalDateTime endTime) {
+    public Sleep(int id, String baby, LocalDateTime startTime, LocalDateTime endTime) {
         this.id = id;
         this.baby = baby;
         this.startTime = startTime;
         this.endTime = endTime;
     }
 
-    public Sleep(int id, int baby, LocalDateTime startTime) {
+    public Sleep(int id, String baby, LocalDateTime startTime) {
         this.id = id;
         this.baby = baby;
         this.startTime = startTime;
@@ -36,7 +36,7 @@ public class Sleep implements Parcelable {
 
     protected Sleep(Parcel in) {
         id = in.readInt();
-        baby = in.readInt();
+        baby = in.readString();
     }
 
     public static final Creator<Sleep> CREATOR = new Creator<Sleep>() {
@@ -60,11 +60,11 @@ public class Sleep implements Parcelable {
         this.id = id;
     }
 
-    public int getBaby() {
+    public String getBaby() {
         return baby;
     }
 
-    public void setBaby(int baby) {
+    public void setBaby(String baby) {
         this.baby = baby;
     }
 
@@ -103,6 +103,6 @@ public class Sleep implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
-        parcel.writeInt(baby);
+        parcel.writeString(baby);
     }
 }

@@ -15,12 +15,12 @@ import java.time.LocalDateTime;
 public class Change implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private int baby;
+    private String baby;
     private LocalDateTime changeTime;
     private Boolean isPoop;
 
     //constructor
-    public Change(int baby, LocalDateTime changeTime, Boolean isPoop) {
+    public Change(String baby, LocalDateTime changeTime, Boolean isPoop) {
         this.baby = baby;
         this.changeTime = changeTime;
         this.isPoop = isPoop;
@@ -28,7 +28,7 @@ public class Change implements Parcelable {
 
     protected Change(Parcel in) {
         id = in.readInt();
-        baby = in.readInt();
+        baby = in.readString();
         byte tmpIsPoop = in.readByte();
         isPoop = tmpIsPoop == 0 ? null : tmpIsPoop == 1;
     }
@@ -54,11 +54,11 @@ public class Change implements Parcelable {
         this.id = id;
     }
 
-    public int getBaby() {
+    public String getBaby() {
         return baby;
     }
 
-    public void setBaby(int baby) {
+    public void setBaby(String baby) {
         this.baby = baby;
     }
 
@@ -96,7 +96,7 @@ public class Change implements Parcelable {
     @Override
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
-        parcel.writeInt(baby);
+        parcel.writeString(baby);
         parcel.writeByte((byte) (isPoop == null ? 0 : isPoop ? 1 : 2));
     }
 }
