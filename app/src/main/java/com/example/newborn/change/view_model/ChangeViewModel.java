@@ -21,15 +21,15 @@ public class ChangeViewModel extends AndroidViewModel {
         changeRepo = new ChangeDbRepository(application);
     }
 
-    LiveData<List<Change>> getObserverChangeByBaby() {
+    public LiveData<List<Change>> getObserverChangeByBaby() {
         return changeRepo.getObserverChangeByBaby();
     }
 
-    LiveData<List<Change>> getObserverChangeByBabyByDate() {
+    public LiveData<List<Change>> getObserverChangeByBabyByDate() {
         return changeRepo.getObserverChangeByBabyByDate();
     }
 
-    LiveData<Change> getObserverLastChangeByBaby() {
+    public LiveData<Change> getObserverLastChangeByBaby() {
         return changeRepo.getObserverLastChangeByBaby();
     }
 
@@ -37,19 +37,19 @@ public class ChangeViewModel extends AndroidViewModel {
         changeRepo.getChangeByBabyByDate(baby, date);
     }
 
-    void getLastChangeByBaby(String baby) {
+    public void getLastChangeByBaby(String baby) {
         changeRepo.getLastChangeByBaby(baby);
     }
 
-    void insertChange(Change change) {
+    public void insertChange(Change change) {
         changeRepo.insertChange(change);
     }
 
-    void updateChange(Change change) {
+    public void updateChange(Change change) {
         changeRepo.updateChange(change);
     }
 
-    void deleteChange(Change change) {
+    public void deleteChange(Change change) {
         changeRepo.deleteChange(change);
     }
 }
