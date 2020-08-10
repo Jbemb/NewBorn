@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!-- "ifRoom" indique que le bouton sera affiché dans l’action barre s’il y a l’espace suffisant -->
+    <item
+        android:id="@+id/action_accueil"
+        android:icon="@drawable/ic_action_home"
+        android:title="Accueil"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/action_activites_recentes"
+        android:title="Activités Récentes"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/action_bilan"
+        android:title="Bilan"
+        app:showAsAction="never"/>
+
+    <!-- “never” indique que le bouton sera visible dans le menu ‘configuration’ en haut à gauche -->
+    <item android:id="@+id/action_parametres"
+        android:title="Paramètres"
+        app:showAsAction="never"/>
+</menu>

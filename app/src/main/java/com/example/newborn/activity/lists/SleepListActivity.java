@@ -5,10 +5,14 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ListView;
 
 import com.example.newborn.R;
+import com.example.newborn.activity.MainActivity;
 import com.example.newborn.activity.lists.adapters.SleepAdapter;
 import com.example.newborn.sleep.bo.Sleep;
 import com.example.newborn.sleep.view_model.SleepViewModel;
@@ -38,6 +42,34 @@ public class SleepListActivity extends AppCompatActivity {
         });
     }
 
-
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+    //TODO links of the menu
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        Intent intent;
+//        switch (item.getItemId()) {
+//            case R.id.action_accueil:
+//                intent = new Intent(this, MainActivity.class);
+//                startActivity(intent);
+//                return true;
+//            case R.id.action_activites_recentes:
+//                intent = new Intent(this, RecentActivitiesActivity.class);
+//                startActivity(intent);
+//                return true;
+//            case R.id.action_bilan:
+//                intent = new Intent(this, SummaryActivity.class);
+//                startActivity(intent);
+//                return true;
+//            case R.id.action_parametres:
+//                intent = new Intent(this, ParameterActivity.class);
+//                startActivity(intent);
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
 }
