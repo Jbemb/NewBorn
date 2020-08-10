@@ -17,6 +17,7 @@ import com.example.newborn.change.bo.Change;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.List;
 
 public class ChangeAdapter extends ArrayAdapter<Change> {
@@ -38,13 +39,12 @@ public class ChangeAdapter extends ArrayAdapter<Change> {
 
         Change change = getItem(position);
 
-        LocalDateTime dateTime = change.getChangeTime();
+        Date dateTime = change.getChangeTime();
         //set date
         String dateString = new SimpleDateFormat("dd/MM/yyyy").format(dateTime);
         tvDate.setText(dateString);
         //set time
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        String timeString = dateTime.format(formatter);
+        String timeString = new SimpleDateFormat("HH:mm").format(dateTime);
         tvTime.setText(timeString);
         //set selle
         if (change.getPoop()){
