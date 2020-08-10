@@ -23,7 +23,7 @@ public class ChangeAdapter extends ArrayAdapter {
     public View getView(int position, @Nullable View convertView, @Nullable ViewGroup parent) {
         if (convertView == null) {
             LayoutInflater li = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = li.inflate(R.layout.line_style_change, parent, false);
+            convertView = li.inflate(R.layout.style_list_change, parent, false);
         }
         //TODO add info by line
         return convertView;
