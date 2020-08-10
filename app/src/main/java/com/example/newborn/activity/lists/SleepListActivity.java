@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.newborn.R;
 
-public class SleepList extends AppCompatActivity {
+public class SleepListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
