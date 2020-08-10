@@ -1,4 +1,4 @@
-package com.example.newborn.bo;
+package com.example.newborn.meal.bo;
 
 
 import android.os.Parcel;

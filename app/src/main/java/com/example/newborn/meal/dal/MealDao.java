@@ -1,4 +1,4 @@
-package com.example.newborn.dal;
+package com.example.newborn.meal.dal;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -7,7 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.newborn.bo.Meal;
+import com.example.newborn.meal.bo.Meal;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,7 +25,7 @@ public interface MealDao {
     List<Meal> getMealByBabyByDate(String baby, LocalDateTime date);
 
     @Query("SELECT * FROM Meal WHERE baby = :baby ORDER BY id DESC LIMIT 1 ")
-    List<Meal> getLastMealByBaby(String baby);
+    Meal getLastMealByBaby(String baby);
 
     @Update
     void updateMeal (Meal meal);

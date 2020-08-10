@@ -1,4 +1,4 @@
-package com.example.newborn.dal;
+package com.example.newborn.sleep.dal;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -7,9 +7,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.example.newborn.bo.Change;
-import com.example.newborn.bo.Meal;
-import com.example.newborn.bo.Sleep;
+import com.example.newborn.sleep.bo.Sleep;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,7 +25,7 @@ public interface SleepDao {
     List<Sleep> getSleepByBabyByDate(String baby, LocalDateTime date);
 
     @Query("SELECT * FROM Sleep WHERE baby = :baby ORDER BY id DESC LIMIT 1 ")
-    List<Sleep> getLastSleepByBaby(String baby);
+    Sleep getLastSleepByBaby(String baby);
 
     @Update
     void updateSleep (Sleep sleep);
