@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.newborn.R;
 import com.example.newborn.activity.lists.adapters.ChangeAdapter;
+import com.example.newborn.change.activity.AddModifyChangeActivity;
 import com.example.newborn.change.bo.Change;
 import com.example.newborn.change.repository.ChangeDbRepository;
 import com.example.newborn.change.repository.IChangeRepository;
@@ -87,9 +88,9 @@ public class ChangeListActivity extends AppCompatActivity {
 
     public void onClickEditChange(View view){
         //send in intent to Edit page
-       //Intent intent = new Intent(this, AddChangeActivity.class);
-        //intent.putExtra("modifyChange", change);
-        //startActivity(intent);
+        Intent intent = new Intent(this, AddModifyChangeActivity.class);
+        intent.putExtra("modifyChange", change);
+        startActivity(intent);
     }
 
     public void onClickDeleteChange(View view){
@@ -101,8 +102,8 @@ public class ChangeListActivity extends AppCompatActivity {
 
     //TODO add intent to add activity
     public void OnClickAddChange(View view) {
-        //Intent intent = new Intent(this, AddChangeActivity.class);
-        //startActivity(intent);
+        Intent intent = new Intent(this, AddModifyChangeActivity.class);
+        startActivity(intent);
     }
     //TODO add intent to go back
     public void OnClickBack(View view) {
