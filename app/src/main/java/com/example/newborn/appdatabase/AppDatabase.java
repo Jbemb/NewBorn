@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
 import com.example.newborn.change.bo.Change;
@@ -25,6 +26,7 @@ import javax.xml.namespace.QName;
 
 
 @Database(entities = {Meal.class, Change.class, Sleep.class}, exportSchema = false, version = 1)
+@TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
     //singleton
     private static AppDatabase INSTANCE;
