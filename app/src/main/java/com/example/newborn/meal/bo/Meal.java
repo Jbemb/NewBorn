@@ -32,23 +32,30 @@ public class Meal implements Parcelable {
         this.rightBreast = rightBreast;
     }
 
-    public Meal(int id, String baby, LocalDateTime time) {
+    public Meal(String baby, LocalDateTime time) {
         this.id = id;
         this.baby = baby;
         this.time = time;
     }
 
-    public Meal(int id, String baby, LocalDateTime time, int quantity) {
+    public Meal(String baby, LocalDateTime time, int quantity) {
         this.id = id;
         this.baby = baby;
         this.time = time;
         this.quantity = quantity;
     }
 
-    public Meal(int id, String baby, LocalDateTime time, boolean rightBreast) {
+    public Meal(String baby, LocalDateTime time, boolean rightBreast) {
         this.id = id;
         this.baby = baby;
         this.time = time;
+        this.rightBreast = rightBreast;
+    }
+
+    public Meal(String baby, LocalDateTime time, int quantity, boolean rightBreast) {
+        this.baby = baby;
+        this.time = time;
+        this.quantity = quantity;
         this.rightBreast = rightBreast;
     }
 
