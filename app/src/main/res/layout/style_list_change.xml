@@ -27,12 +27,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/tv_selle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/iv_selle"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_margin="30dp"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
+        android:scaleType="fitXY"
         android:src="@android:drawable/btn_star_big_on"
         android:visibility="visible"
         app:layout_constraintLeft_toRightOf="@id/tv_timeItem"
@@ -48,7 +49,7 @@
         android:onClick="onClickEditChange"
         android:scaleType="fitXY"
         android:src="@android:drawable/ic_menu_edit"
-        app:layout_constraintLeft_toRightOf="@id/tv_durationItem"
+        app:layout_constraintLeft_toRightOf="@id/iv_selle"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
