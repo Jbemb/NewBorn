@@ -6,8 +6,12 @@ import android.os.Parcelable;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
-import java.time.LocalDateTime;
+import com.example.newborn.appdatabase.Converters;
+
+import java.util.Date;
+import java.util.Date;
 
 /**
  * class representing sleep
@@ -18,27 +22,27 @@ public class Sleep implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String baby;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private Date startTime;
+    private Date endTime;
 
     //constructors
     public Sleep() {
     }
     @Ignore
-    public Sleep(int id, String baby, LocalDateTime startTime, LocalDateTime endTime) {
+    public Sleep(int id, String baby, Date startTime, Date endTime) {
         this.id = id;
         this.baby = baby;
         this.startTime = startTime;
         this.endTime = endTime;
     }
     @Ignore
-    public Sleep(String baby, LocalDateTime startTime) {
+    public Sleep(String baby, Date startTime) {
         this.id = id;
         this.baby = baby;
         this.startTime = startTime;
     }
     @Ignore
-    public Sleep(String baby, LocalDateTime startTime, LocalDateTime endTime) {
+    public Sleep(String baby, Date startTime, Date endTime) {
         this.baby = baby;
         this.startTime = startTime;
         this.endTime = endTime;
@@ -78,19 +82,19 @@ public class Sleep implements Parcelable {
         this.baby = baby;
     }
 
-    public LocalDateTime getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(LocalDateTime startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 

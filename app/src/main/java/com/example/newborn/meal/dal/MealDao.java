@@ -9,7 +9,7 @@ import androidx.room.Update;
 
 import com.example.newborn.meal.bo.Meal;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Dao
@@ -22,7 +22,7 @@ public interface MealDao {
     LiveData<List<Meal>> getMealByBaby(String baby);
 
     @Query("SELECT * FROM Meal WHERE baby = :baby AND time = :date")
-    List<Meal> getMealByBabyByDate(String baby, LocalDateTime date);
+    List<Meal> getMealByBabyByDate(String baby, Date date);
 
     @Query("SELECT * FROM Meal WHERE baby = :baby ORDER BY id DESC LIMIT 1 ")
     Meal getLastMealByBaby(String baby);

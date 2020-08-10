@@ -10,7 +10,7 @@ import com.example.newborn.meal.bo.Meal;
 import com.example.newborn.meal.repository.IMealRepository;
 import com.example.newborn.meal.repository.MealDbRepository;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public class MealViewModel extends AndroidViewModel {
@@ -33,7 +33,7 @@ public class MealViewModel extends AndroidViewModel {
         return mealRepo.getObserverLastMealByBaby();
     }
 
-    void getMealByBabyByDate(String baby, LocalDateTime date) {
+    void getMealByBabyByDate(String baby, Date date) {
         mealRepo.getMealByBabyByDate(baby,date);
     }
 

@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.newborn.meal.bo.Meal;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public interface IMealRepository {
@@ -14,7 +14,7 @@ public interface IMealRepository {
     LiveData<List<Meal>> getObserverMealByBabyByDate();
     LiveData<Meal> getObserverLastMealByBaby();
 
-    void getMealByBabyByDate (String baby, LocalDateTime date);
+    void getMealByBabyByDate (String baby, Date date);
 
     void getLastMealByBaby (String baby);
 

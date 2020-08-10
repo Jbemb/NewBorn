@@ -13,9 +13,10 @@ import androidx.annotation.Nullable;
 import com.example.newborn.R;
 import com.example.newborn.sleep.bo.Sleep;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
@@ -36,7 +37,7 @@ public class SleepAdapter extends ArrayAdapter<Sleep> {
         //Get the sleep item at the line position
         Sleep sleep = getItem(position);
 
-        LocalDateTime dateTimeSleepStart = sleep.getStartTime();
+        Date dateTimeSleepStart = sleep.getStartTime();
 
         //Set the date to be showed
         TextView tvDate = convertView.findViewById(R.id.tv_dateItem);
@@ -45,22 +46,21 @@ public class SleepAdapter extends ArrayAdapter<Sleep> {
 
         //Set the time to be showed
         TextView tvTime = convertView.findViewById(R.id.tv_timeItem);
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
-        String timeString = dateTimeSleepStart.format(formatter);
+        String timeString = new SimpleDateFormat("HH:mm").format(dateTimeSleepStart);
         tvTime.setText(timeString);
 
         //Calculation of the duration of sleep
-        LocalDateTime dateTimeSleepEnd = sleep.getEndTime();
-        Duration durationMilliseconds = Duration.between(dateTimeSleepEnd, dateTimeSleepStart);
-        long duration = Math.abs(durationMilliseconds.toMinutes());
+        Date dateTimeSleepEnd = sleep.getEndTime();
+        long durationMilliseconds = dateTimeSleepEnd.getTime() - dateTimeSleepStart.getTime();
+        long duration = durationMilliseconds/1000/60;
 
         TextView tvDuration = convertView.findViewById(R.id.tv_durationItem);
 
         if (duration < 60) {
             tvDuration.setText(duration + " min");
         } else {
-            long hours = durationMilliseconds.toHours();
-            long minutes = durationMilliseconds.minusHours(hours).toMinutes();
+            long hours = duration/60;
+            long minutes = duration%60;
             tvDuration.setText(hours + " h " + minutes);
         }
         

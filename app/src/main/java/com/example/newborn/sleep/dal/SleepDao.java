@@ -9,7 +9,7 @@ import androidx.room.Update;
 
 import com.example.newborn.sleep.bo.Sleep;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Dao
@@ -22,7 +22,7 @@ public interface SleepDao {
     LiveData<List<Sleep>> getSleepByBaby(String baby);
 
     @Query("SELECT * FROM Sleep WHERE baby = :baby AND startTime = :date")
-    List<Sleep> getSleepByBabyByDate(String baby, LocalDateTime date);
+    List<Sleep> getSleepByBabyByDate(String baby, Date date);
 
     @Query("SELECT * FROM Sleep WHERE baby = :baby ORDER BY id DESC LIMIT 1 ")
     Sleep getLastSleepByBaby(String baby);

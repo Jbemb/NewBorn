@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.example.newborn.R;
+import com.facebook.stetho.Stetho;
 
 public class ChangeListActivity extends AppCompatActivity {
 
@@ -15,6 +16,7 @@ public class ChangeListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_list);
+        Stetho.initializeWithDefaults(this);
     }
 
     public void OnClickAddChange(View view) {

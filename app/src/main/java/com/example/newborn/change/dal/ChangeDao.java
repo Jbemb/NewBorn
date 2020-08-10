@@ -9,7 +9,7 @@ import androidx.room.Update;
 
 import com.example.newborn.change.bo.Change;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Dao
@@ -22,7 +22,7 @@ public interface ChangeDao {
     LiveData<List<Change>> getChangeByBaby(String baby);
 
     @Query("SELECT * FROM Change WHERE baby = :baby AND changeTime = :date")
-    List<Change> getChangeByBabyByDate(String baby, LocalDateTime date);
+    List<Change> getChangeByBabyByDate(String baby, Date date);
 
     @Query("SELECT * FROM Change WHERE baby = :baby ORDER BY id DESC LIMIT 1 ")
     Change getLastChangeByBaby(String baby);

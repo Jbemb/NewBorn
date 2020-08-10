@@ -11,7 +11,7 @@ import androidx.room.TypeConverters;
 
 import com.example.newborn.appdatabase.Converters;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Class representing a meal
@@ -22,8 +22,7 @@ public class Meal implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String baby;
-    private LocalDateTime time;
-    @TypeConverters({Converters.class})
+    private Date time;
     private int quantity;
     // right = true, left = false
     private boolean rightBreast;
@@ -33,7 +32,7 @@ public class Meal implements Parcelable {
     }
 
     @Ignore
-    public Meal(int id, String baby, LocalDateTime time, int quantity, boolean rightBreast) {
+    public Meal(int id, String baby, Date time, int quantity, boolean rightBreast) {
         this.id = id;
         this.baby = baby;
         this.time = time;
@@ -41,27 +40,27 @@ public class Meal implements Parcelable {
         this.rightBreast = rightBreast;
     }
     @Ignore
-    public Meal(String baby, LocalDateTime time) {
+    public Meal(String baby, Date time) {
         this.id = id;
         this.baby = baby;
         this.time = time;
     }
     @Ignore
-    public Meal(String baby, LocalDateTime time, int quantity) {
+    public Meal(String baby, Date time, int quantity) {
         this.id = id;
         this.baby = baby;
         this.time = time;
         this.quantity = quantity;
     }
     @Ignore
-    public Meal(String baby, LocalDateTime time, boolean rightBreast) {
+    public Meal(String baby, Date time, boolean rightBreast) {
         this.id = id;
         this.baby = baby;
         this.time = time;
         this.rightBreast = rightBreast;
     }
     @Ignore
-    public Meal(String baby, LocalDateTime time, int quantity, boolean rightBreast) {
+    public Meal(String baby, Date time, int quantity, boolean rightBreast) {
         this.baby = baby;
         this.time = time;
         this.quantity = quantity;
@@ -104,11 +103,11 @@ public class Meal implements Parcelable {
         this.baby = baby;
     }
 
-    public LocalDateTime getTime() {
+    public Date getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(Date time) {
         this.time = time;
     }
 

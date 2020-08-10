@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.newborn.sleep.bo.Sleep;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public interface ISleepRepository {
@@ -13,7 +13,7 @@ public interface ISleepRepository {
     LiveData<List<Sleep>> getObserverSleepByBabyByDate();
     LiveData<Sleep> getObserverLastSleepByBaby();
 
-    void getSleepByBabyByDate (String baby, LocalDateTime date);
+    void getSleepByBabyByDate (String baby, Date date);
 
     void getLastSleepByBaby (String baby);
 

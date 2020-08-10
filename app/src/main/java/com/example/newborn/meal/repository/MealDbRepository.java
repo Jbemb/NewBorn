@@ -13,7 +13,7 @@ import com.example.newborn.meal.dal.MealDao;
 import com.example.newborn.sleep.bo.Sleep;
 import com.example.newborn.sleep.dal.SleepDao;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public class MealDbRepository implements IMealRepository {
@@ -53,7 +53,7 @@ public class MealDbRepository implements IMealRepository {
     }
 
     @Override
-    public void getMealByBabyByDate(String baby, LocalDateTime date) {
+    public void getMealByBabyByDate(String baby, Date date) {
         DoubleParamAsync babyDateParams = new DoubleParamAsync(baby, date);
 
         new AsyncTask<DoubleParamAsync,Void,List<Meal>>() {
@@ -61,7 +61,7 @@ public class MealDbRepository implements IMealRepository {
             @Override
             protected List<Meal> doInBackground(DoubleParamAsync... babyDateParams) {
                 String babyPara = babyDateParams[0].baby;
-                LocalDateTime datePara = babyDateParams[0].date;
+                Date datePara = babyDateParams[0].date;
 
                 return dao.getMealByBabyByDate(babyPara, datePara);
             }

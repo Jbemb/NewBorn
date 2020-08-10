@@ -13,7 +13,7 @@ import com.example.newborn.change.dal.ChangeDao;
 import com.example.newborn.sleep.bo.Sleep;
 import com.example.newborn.sleep.dal.SleepDao;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public class SleepDbRepository implements ISleepRepository {
@@ -53,7 +53,7 @@ public class SleepDbRepository implements ISleepRepository {
     }
 
     @Override
-    public void getSleepByBabyByDate(String baby, LocalDateTime date) {
+    public void getSleepByBabyByDate(String baby, Date date) {
         DoubleParamAsync babyDateParams = new DoubleParamAsync(baby, date);
 
         new AsyncTask<DoubleParamAsync,Void,List<Sleep>>() {
@@ -61,7 +61,7 @@ public class SleepDbRepository implements ISleepRepository {
             @Override
             protected List<Sleep> doInBackground(DoubleParamAsync... babyDateParams) {
                 String babyPara = babyDateParams[0].baby;
-                LocalDateTime datePara = babyDateParams[0].date;
+                Date datePara = babyDateParams[0].date;
 
                 return dao.getSleepByBabyByDate(babyPara, datePara);
             }

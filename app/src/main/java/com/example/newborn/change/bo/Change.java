@@ -6,8 +6,12 @@ import android.os.Parcelable;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
-import java.time.LocalDateTime;
+import com.example.newborn.appdatabase.Converters;
+
+import java.util.Date;
+import java.util.Date;
 
 /**
  * class representing change
@@ -17,7 +21,7 @@ public class Change implements Parcelable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String baby;
-    private LocalDateTime changeTime;
+    private Date changeTime;
     private Boolean isPoop;
 
     //constructor
@@ -25,14 +29,14 @@ public class Change implements Parcelable {
     }
 
     @Ignore
-    public Change(int id, String baby, LocalDateTime changeTime, Boolean isPoop) {
+    public Change(int id, String baby, Date changeTime, Boolean isPoop) {
         this.id = id;
         this.baby = baby;
         this.changeTime = changeTime;
         this.isPoop = isPoop;
     }
     @Ignore
-    public Change(String baby, LocalDateTime changeTime, Boolean isPoop) {
+    public Change(String baby, Date changeTime, Boolean isPoop) {
         this.baby = baby;
         this.changeTime = changeTime;
         this.isPoop = isPoop;
@@ -74,11 +78,11 @@ public class Change implements Parcelable {
         this.baby = baby;
     }
 
-    public LocalDateTime getChangeTime() {
+    public Date getChangeTime() {
         return changeTime;
     }
 
-    public void setChangeTime(LocalDateTime changeTime) {
+    public void setChangeTime(Date changeTime) {
         this.changeTime = changeTime;
     }
 

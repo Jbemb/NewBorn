@@ -11,7 +11,7 @@ import com.example.newborn.appdatabase.AppDatabase;
 import com.example.newborn.change.bo.Change;
 import com.example.newborn.change.dal.ChangeDao;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public class ChangeDbRepository implements IChangeRepository{
@@ -51,7 +51,7 @@ public class ChangeDbRepository implements IChangeRepository{
     }
 
     @Override
-    public void getChangeByBabyByDate(String baby, LocalDateTime date) {
+    public void getChangeByBabyByDate(String baby, Date date) {
         DoubleParamAsync babyDateParams = new DoubleParamAsync(baby, date);
 
         new AsyncTask<DoubleParamAsync,Void,List<Change>>() {
@@ -59,7 +59,7 @@ public class ChangeDbRepository implements IChangeRepository{
             @Override
             protected List<Change> doInBackground(DoubleParamAsync... babyDateParams) {
                 String babyPara = babyDateParams[0].baby;
-                LocalDateTime datePara = babyDateParams[0].date;
+                Date datePara = babyDateParams[0].date;
 
                 return dao.getChangeByBabyByDate(babyPara, datePara);
             }

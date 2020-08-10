@@ -16,6 +16,7 @@ import com.example.newborn.activity.MainActivity;
 import com.example.newborn.activity.lists.adapters.SleepAdapter;
 import com.example.newborn.sleep.bo.Sleep;
 import com.example.newborn.sleep.view_model.SleepViewModel;
+import com.facebook.stetho.Stetho;
 
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class SleepListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sleep_list);
-
+        Stetho.initializeWithDefaults(this);
         sleepList = findViewById(R.id.lv_sleeplist);
 
         sleepVM = ViewModelProviders.of(this).get(SleepViewModel.class);

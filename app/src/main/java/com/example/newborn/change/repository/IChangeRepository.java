@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 
 import com.example.newborn.change.bo.Change;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public interface IChangeRepository {
@@ -13,7 +13,7 @@ public interface IChangeRepository {
     LiveData<List<Change>> getObserverChangeByBabyByDate();
     LiveData<Change> getObserverLastChangeByBaby();
 
-    void getChangeByBabyByDate (String baby, LocalDateTime date);
+    void getChangeByBabyByDate (String baby, Date date);
 
     void getLastChangeByBaby (String baby);
 

@@ -11,7 +11,7 @@ import com.example.newborn.sleep.bo.Sleep;
 import com.example.newborn.sleep.repository.ISleepRepository;
 import com.example.newborn.sleep.repository.SleepDbRepository;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public class SleepViewModel extends AndroidViewModel {
@@ -35,7 +35,7 @@ public class SleepViewModel extends AndroidViewModel {
         return sleepRepo.getObserverLastSleepByBaby();
     }
 
-    public void getSleepByBabyByDate(String baby, LocalDateTime date) {
+    public void getSleepByBabyByDate(String baby, Date date) {
         sleepRepo.getSleepByBabyByDate(baby, date);
     }
 

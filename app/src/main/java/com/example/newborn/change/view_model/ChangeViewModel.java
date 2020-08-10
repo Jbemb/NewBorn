@@ -10,7 +10,7 @@ import com.example.newborn.change.bo.Change;
 import com.example.newborn.change.repository.ChangeDbRepository;
 import com.example.newborn.change.repository.IChangeRepository;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 public class ChangeViewModel extends AndroidViewModel {
@@ -33,7 +33,7 @@ public class ChangeViewModel extends AndroidViewModel {
         return changeRepo.getObserverLastChangeByBaby();
     }
 
-    void getChangeByBabyByDate(String baby, LocalDateTime date) {
+    void getChangeByBabyByDate(String baby, Date date) {
         changeRepo.getChangeByBabyByDate(baby, date);
     }
 

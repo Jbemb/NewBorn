@@ -1,15 +1,15 @@
 package com.example.newborn.appRepository;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * This class is used to pass two parameters to AsyncTask
  */
 public class DoubleParamAsync {
     public String baby;
-    public LocalDateTime date;
+    public Date date;
 
-    public DoubleParamAsync(String baby, LocalDateTime date) {
+    public DoubleParamAsync(String baby, Date date) {
         this.baby = baby;
         this.date = date;
     }
