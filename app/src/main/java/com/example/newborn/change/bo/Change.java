@@ -20,6 +20,14 @@ public class Change implements Parcelable {
     private Boolean isPoop;
 
     //constructor
+
+    public Change(int id, String baby, LocalDateTime changeTime, Boolean isPoop) {
+        this.id = id;
+        this.baby = baby;
+        this.changeTime = changeTime;
+        this.isPoop = isPoop;
+    }
+
     public Change(String baby, LocalDateTime changeTime, Boolean isPoop) {
         this.baby = baby;
         this.changeTime = changeTime;
