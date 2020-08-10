@@ -10,7 +10,7 @@ public interface IMealRepository {
 
 
     LiveData<List<Meal>> getObserverMealByBaby();
-    List<Meal> getObserverMealByBabyByDate();
+    LiveData<List<Meal>> getObserverMealByBabyByDate();
 
     Meal getLastMealByBaby(String baby);
 

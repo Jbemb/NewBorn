@@ -9,7 +9,7 @@ import java.util.List;
 public interface IChangeRepository {
 
     LiveData<List<Change>> getObserverChangeByBaby();
-    List<Change> getObserverChangeByBabyByDate();
+    LiveData<List<Change>> getObserverChangeByBabyByDate();
 
     Change getLastChangeByBaby(String baby);
 
