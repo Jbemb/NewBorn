@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.time.LocalDateTime;
@@ -21,19 +22,22 @@ public class Sleep implements Parcelable {
     private LocalDateTime endTime;
 
     //constructors
+    public Sleep() {
+    }
+    @Ignore
     public Sleep(int id, String baby, LocalDateTime startTime, LocalDateTime endTime) {
         this.id = id;
         this.baby = baby;
         this.startTime = startTime;
         this.endTime = endTime;
     }
-
+    @Ignore
     public Sleep(String baby, LocalDateTime startTime) {
         this.id = id;
         this.baby = baby;
         this.startTime = startTime;
     }
-
+    @Ignore
     public Sleep(String baby, LocalDateTime startTime, LocalDateTime endTime) {
         this.baby = baby;
         this.startTime = startTime;

@@ -4,6 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.time.LocalDateTime;
@@ -20,14 +21,17 @@ public class Change implements Parcelable {
     private Boolean isPoop;
 
     //constructor
+    public Change() {
+    }
 
+    @Ignore
     public Change(int id, String baby, LocalDateTime changeTime, Boolean isPoop) {
         this.id = id;
         this.baby = baby;
         this.changeTime = changeTime;
         this.isPoop = isPoop;
     }
-
+    @Ignore
     public Change(String baby, LocalDateTime changeTime, Boolean isPoop) {
         this.baby = baby;
         this.changeTime = changeTime;

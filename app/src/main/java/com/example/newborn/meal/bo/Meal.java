@@ -5,6 +5,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import java.time.LocalDateTime;
@@ -24,6 +25,10 @@ public class Meal implements Parcelable {
     private boolean rightBreast;
 
     //constructors
+    public Meal() {
+    }
+
+    @Ignore
     public Meal(int id, String baby, LocalDateTime time, int quantity, boolean rightBreast) {
         this.id = id;
         this.baby = baby;
@@ -31,27 +36,27 @@ public class Meal implements Parcelable {
         this.quantity = quantity;
         this.rightBreast = rightBreast;
     }
-
+    @Ignore
     public Meal(String baby, LocalDateTime time) {
         this.id = id;
         this.baby = baby;
         this.time = time;
     }
-
+    @Ignore
     public Meal(String baby, LocalDateTime time, int quantity) {
         this.id = id;
         this.baby = baby;
         this.time = time;
         this.quantity = quantity;
     }
-
+    @Ignore
     public Meal(String baby, LocalDateTime time, boolean rightBreast) {
         this.id = id;
         this.baby = baby;
         this.time = time;
         this.rightBreast = rightBreast;
     }
-
+    @Ignore
     public Meal(String baby, LocalDateTime time, int quantity, boolean rightBreast) {
         this.baby = baby;
         this.time = time;
