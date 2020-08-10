@@ -21,6 +21,8 @@ import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import javax.xml.namespace.QName;
+
 
 @Database(entities = {Meal.class, Change.class, Sleep.class}, exportSchema = false, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
@@ -63,21 +65,16 @@ public abstract class AppDatabase extends RoomDatabase {
                     LocalDateTime date = LocalDateTime.now();
                     Random rand = new Random();
                     LocalDateTime ranDate = date.minusHours(rand.nextInt(36));
-                    //random baby 1/5
-                    int ran = rand.nextInt(5);
-                    if(ran == 2){
-                        name = "Armel";
-                    }
 
                     //info change
                     ChangeDao changeDao = INSTANCE.getChangeDao();
                     int i;
-                    for(i=0; i>70; i++){
-                        ran = rand.nextInt(2);
+                    for(i=0; i>35; i++){
+                        int ran = rand.nextInt(2);
                         if(ran == 0){
                             random = false;
                         }
-                        Change change = new Change(name,ranDate,random);
+                        Change change = new Change(changeName(name),ranDate,random);
                         changeDao.insertChange(change);
                     }
                     //make sure last entry for Zachary is the most recent
@@ -85,10 +82,10 @@ public abstract class AppDatabase extends RoomDatabase {
 
                     //info sleep
                     SleepDao sleepDao = INSTANCE.getSleepDao();
-                    for(i=0; i>70; i++){
+                    for(i=0; i>30; i++){
                         LocalDateTime startDate = ranDate;
                         LocalDateTime endDate = startDate.plusMinutes(rand.nextInt(360));
-                        Sleep sleep = new Sleep(name, startDate, endDate);
+                        Sleep sleep = new Sleep(changeName(name), startDate, endDate);
                         sleepDao.insertSleep(sleep);
                     }
                     //make sure last sleep is recent and Zachary's
@@ -96,14 +93,14 @@ public abstract class AppDatabase extends RoomDatabase {
 
                     //info meal
                     MealDao mealDao = INSTANCE.getMealDao();
-                    for(i=0; i>70; i++){
+                    for(i=0; i>30; i++){
                         //change breast
                         if(random == true){
                             random = false;
                         }else{
                             random = true;
                         }
-                        Meal meal = new Meal(name, ranDate, 120, random);
+                        Meal meal = new Meal(changeName(name), ranDate, 120, random);
                         mealDao.insertMeal(meal);
                     }
                     //make sure last entry for Zachary is the most recent
@@ -114,5 +111,16 @@ public abstract class AppDatabase extends RoomDatabase {
             }.execute(INSTANCE);
         }
     };
+
+    //random baby 1/5
+    private static String changeName(String name){
+        Random rand = new Random();
+        name = "Zachary";
+        int ran = rand.nextInt(5);
+        if(ran == 2){
+            name = "Armel";
+        }
+        return name;
+    }
 
 }
