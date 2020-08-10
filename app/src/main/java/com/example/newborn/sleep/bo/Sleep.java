@@ -28,10 +28,16 @@ public class Sleep implements Parcelable {
         this.endTime = endTime;
     }
 
-    public Sleep(int id, String baby, LocalDateTime startTime) {
+    public Sleep(String baby, LocalDateTime startTime) {
         this.id = id;
         this.baby = baby;
         this.startTime = startTime;
+    }
+
+    public Sleep(String baby, LocalDateTime startTime, LocalDateTime endTime) {
+        this.baby = baby;
+        this.startTime = startTime;
+        this.endTime = endTime;
     }
 
     protected Sleep(Parcel in) {

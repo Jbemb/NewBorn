@@ -18,6 +18,8 @@ import com.example.newborn.sleep.dal.SleepDao;
 
 import java.time.LocalDateTime;
 import java.util.Random;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 @Database(entities = {Meal.class, Change.class, Sleep.class}, exportSchema = false, version = 1)
@@ -30,6 +32,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public abstract ChangeDao getChangeDao();
     public abstract SleepDao getSleepDao();
 
+    public static final ExecutorService databaseWriteExecutor= Executors.newFixedThreadPool(1);
     /**
      * singleton
      */
@@ -51,33 +54,43 @@ public abstract class AppDatabase extends RoomDatabase {
             new AsyncTask<AppDatabase,Void,Void>(){
                 @Override
                 protected Void doInBackground(AppDatabase... appDatabases) {
+                    //basic variables
+                    boolean random = true;
+                    String name = "Zachary";
+                    LocalDateTime date = LocalDateTime.now();
+                    Random rand = new Random();
+
+                    //random baby 1/5
+                    int ran = rand.nextInt(5);
+                    if(ran == 2){
+                        name = "Armel";
+                    }
+
                     //info change
                     ChangeDao changeDao = INSTANCE.getChangeDao();
                     int i;
-                    for(i=0; i>50; i++){
-                        boolean random = true;
-                        String name = "Zachary";
-                        LocalDateTime date = LocalDateTime.now();
-                        Random rand = new Random();
-                        int ran = rand.nextInt(2);
+                    for(i=0; i>70; i++){
+                        LocalDateTime ranDate = date.minusHours(rand.nextInt(36));
+                        ran = rand.nextInt(2);
                         if(ran == 0){
                             random = false;
                         }
-                        ran = rand.nextInt(5);
-                        if(ran == 2){
-                            name = "Armel";
-                        }
-                        //Change change = new Change("")
-                        //changeDao.insertChange(change);
+                        Change change = new Change(name,ranDate,random);
+                        changeDao.insertChange(change);
                     };
+                    //make sure last entry for Zachary is the most recent
+                    changeDao.insertChange(new Change("Zachary",date,true));
 
                     //info sleep
                     SleepDao sleepDao = INSTANCE.getSleepDao();
-                    int s;
-                    for(s=0; s>50; s++){
-                        //Sleep change = new Change()
-                        //changeDao.insertChange(change);
+                    for(i=0; i>70; i++){
+                        LocalDateTime startDate = date.minusHours(rand.nextInt(36));
+                        LocalDateTime endDate = startDate.plusMinutes(rand.nextInt(360));
+                        Sleep sleep = new Sleep(name, startDate, endDate);
+                        sleepDao.insertSleep(sleep);
                     };
+                    //make sure last sleep is recent and Zachary's
+                    sleepDao.insertSleep(new Sleep("Zachary", date.minusHours(1), date.minusMinutes(30)));
 
                     return null;
                 }
