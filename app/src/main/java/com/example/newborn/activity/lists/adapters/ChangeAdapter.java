@@ -14,6 +14,9 @@ import androidx.annotation.Nullable;
 import com.example.newborn.R;
 import com.example.newborn.change.bo.Change;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 public class ChangeAdapter extends ArrayAdapter<Change> {
@@ -28,14 +31,22 @@ public class ChangeAdapter extends ArrayAdapter<Change> {
             LayoutInflater li = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             convertView = li.inflate(R.layout.style_list_change, parent, false);
         }
-        //TODO add info by line
+
         TextView tvDate = convertView.findViewById(R.id.tv_date);
         TextView tvTime = convertView.findViewById(R.id.tv_time);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.iv_selle);
 
         Change change = getItem(position);
 
-        
+        LocalDateTime dateTime = change.getChangeTime();
+        //set date
+        String dateString = new SimpleDateFormat("dd/MM/yyyy").format(dateTime);
+        tvDate.setText(dateString);
+        //set time
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        String timeString = dateTime.format(formatter);
+        tvTime.setText(timeString);
+        //set selle
         if (change.getPoop()){
             imageView.setVisibility(View.VISIBLE);
         }
