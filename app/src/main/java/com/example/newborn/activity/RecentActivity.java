@@ -19,4 +19,10 @@ public class RecentActivity extends AppCompatActivity {
 
     public void onClickAddMeal(View view) {
     }
+
+    public void onClickAddChange(View view) {
+    }
+
+    public void onClickAddSleep(View view) {
+    }
 }
