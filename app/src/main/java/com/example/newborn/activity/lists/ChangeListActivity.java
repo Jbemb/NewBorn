@@ -25,6 +25,7 @@ import java.util.List;
 public class ChangeListActivity extends AppCompatActivity {
 
     private IChangeRepository changeRepo = new ChangeDbRepository(this);
+    //static?
     private Change change = null;
     private ChangeViewModel changeVM = null;
     ListView changeList =null;
