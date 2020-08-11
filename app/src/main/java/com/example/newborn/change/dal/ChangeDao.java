@@ -21,10 +21,10 @@ public interface ChangeDao {
     @Query("SELECT * FROM Change WHERE baby = :baby")
     LiveData<List<Change>> getChangeByBaby(String baby);
 
-    @Query("SELECT * FROM Change WHERE baby = :baby AND changeTime = :date")
-    List<Change> getChangeByBabyByDate(String baby, Date date);
+    @Query("SELECT * FROM Change WHERE (baby = :baby) AND (changeTime BETWEEN :dayStart AND :dayEnd)")
+    List<Change> getChangeByBabyByDate(String baby, Date dayStart, Date dayEnd);
 
-    @Query("SELECT * FROM Change WHERE baby = :baby ORDER BY id DESC LIMIT 1 ")
+    @Query("SELECT * FROM Change WHERE baby = :baby ORDER BY changeTime DESC LIMIT 1 ")
     Change getLastChangeByBaby(String baby);
 
     @Update

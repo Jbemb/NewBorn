@@ -21,10 +21,10 @@ public interface MealDao {
     @Query("SELECT * FROM Meal WHERE baby = :baby")
     LiveData<List<Meal>> getMealByBaby(String baby);
 
-    @Query("SELECT * FROM Meal WHERE baby = :baby AND time = :date")
-    List<Meal> getMealByBabyByDate(String baby, Date date);
+    @Query("SELECT * FROM Meal WHERE (baby = :baby) AND (time BETWEEN :dayStart AND :dayEnd)")
+    List<Meal> getMealByBabyByDate(String baby, Date dayStart, Date dayEnd);
 
-    @Query("SELECT * FROM Meal WHERE baby = :baby ORDER BY id DESC LIMIT 1 ")
+    @Query("SELECT * FROM Meal WHERE baby = :baby ORDER BY time DESC LIMIT 1 ")
     Meal getLastMealByBaby(String baby);
 
     @Update
