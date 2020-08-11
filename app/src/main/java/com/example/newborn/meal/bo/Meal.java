@@ -4,6 +4,7 @@ package com.example.newborn.meal.bo;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.VisibleForTesting;
 import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
@@ -24,20 +25,20 @@ public class Meal implements Parcelable {
     private String baby;
     private Date time;
     private int quantity;
-    // right = true, left = false
-    private boolean rightBreast;
+    private String breast;
 
     //constructors
     public Meal() {
     }
 
     @Ignore
-    public Meal(int id, String baby, Date time, int quantity, boolean rightBreast) {
+    public Meal(int id, String baby, Date time, int quantity, String breast
+    ) {
         this.id = id;
         this.baby = baby;
         this.time = time;
         this.quantity = quantity;
-        this.rightBreast = rightBreast;
+        this.breast = breast;
     }
     @Ignore
     public Meal(String baby, Date time) {
@@ -53,25 +54,27 @@ public class Meal implements Parcelable {
         this.quantity = quantity;
     }
     @Ignore
-    public Meal(String baby, Date time, boolean rightBreast) {
+    public Meal(String baby, Date time, String breast
+    ) {
         this.id = id;
         this.baby = baby;
         this.time = time;
-        this.rightBreast = rightBreast;
+        this.breast = breast;
     }
     @Ignore
-    public Meal(String baby, Date time, int quantity, boolean rightBreast) {
+    public Meal(String baby, Date time, int quantity, String breast
+    ) {
         this.baby = baby;
         this.time = time;
         this.quantity = quantity;
-        this.rightBreast = rightBreast;
+        this.breast = breast;
     }
 
     protected Meal(Parcel in) {
         id = in.readInt();
         baby = in.readString();
         quantity = in.readInt();
-        rightBreast = in.readByte() != 0;
+        breast = in.readString();
     }
 
     public static final Creator<Meal> CREATOR = new Creator<Meal>() {
@@ -119,13 +122,14 @@ public class Meal implements Parcelable {
         this.quantity = quantity;
     }
 
-    public boolean isRightBreast() {
-        return rightBreast;
+    public String getBreast() {
+        return breast;
     }
 
-    public void setRightBreast(boolean rightBreast) {
-        this.rightBreast = rightBreast;
+    public void setBreast(String breast) {
+        this.breast = breast;
     }
+
     //to String
     @Override
     public String toString() {
@@ -134,7 +138,7 @@ public class Meal implements Parcelable {
                 ", baby=" + baby +
                 ", time=" + time +
                 ", quantity=" + quantity +
-                ", rightBreast=" + rightBreast +
+                ", breast=" + breast +
                 '}';
     }
 
@@ -148,6 +152,6 @@ public class Meal implements Parcelable {
         parcel.writeInt(id);
         parcel.writeString(baby);
         parcel.writeInt(quantity);
-        parcel.writeByte((byte) (rightBreast ? 1 : 0));
+        parcel.writeString(breast);
     }
 }
