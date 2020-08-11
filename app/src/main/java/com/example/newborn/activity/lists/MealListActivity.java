@@ -12,9 +12,6 @@ import android.widget.ListView;
 import com.example.newborn.R;
 import com.example.newborn.activity.AddModify.AddModifyMealActivity;
 import com.example.newborn.activity.lists.adapters.ChangeAdapter;
-import com.example.newborn.change.activity.AddModifyChangeActivity;
-import com.example.newborn.change.bo.Change;
-import com.example.newborn.change.view_model.ChangeViewModel;
 import com.example.newborn.meal.bo.Meal;
 import com.example.newborn.meal.view_model.MealViewModel;
 

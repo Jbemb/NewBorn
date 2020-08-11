@@ -1,4 +1,4 @@
-package com.example.newborn.change.activity;
+package com.example.newborn.activity.AddModify;
 
 import androidx.appcompat.app.AppCompatActivity;
 

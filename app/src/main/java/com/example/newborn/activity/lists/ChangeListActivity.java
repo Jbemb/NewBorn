@@ -14,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.newborn.R;
 import com.example.newborn.activity.lists.adapters.ChangeAdapter;
-import com.example.newborn.change.activity.AddModifyChangeActivity;
+import com.example.newborn.activity.AddModify.AddModifyChangeActivity;
 import com.example.newborn.change.bo.Change;
 import com.example.newborn.change.repository.ChangeDbRepository;
 import com.example.newborn.change.repository.IChangeRepository;

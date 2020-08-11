@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activity.AddModify.AddModifyMealActivity"></activity>
         <activity android:name=".activity.lists.MealListActivity" />
-        <activity android:name=".change.activity.AddModifyChangeActivity" />
+        <activity android:name=".activity.AddModify.AddModifyChangeActivity" />
         <activity android:name=".activity.lists.SleepListActivity" />
         <activity android:name=".activity.lists.ChangeListActivity" />
         <activity android:name=".activity.MainActivity">
