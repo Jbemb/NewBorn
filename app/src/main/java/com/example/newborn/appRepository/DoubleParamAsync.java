@@ -7,10 +7,12 @@ import java.util.Date;
  */
 public class DoubleParamAsync {
     public String baby;
-    public Date date;
+    public Date dayStart;
+    public Date dayEnd;
 
-    public DoubleParamAsync(String baby, Date date) {
+    public DoubleParamAsync(String baby, Date dayStart, Date dayEnd) {
         this.baby = baby;
-        this.date = date;
+        this.dayStart = dayStart;
+        this.dayEnd = dayEnd;
     }
 }
