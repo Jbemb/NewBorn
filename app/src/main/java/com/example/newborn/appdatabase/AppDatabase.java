@@ -114,16 +114,17 @@ public abstract class AppDatabase extends RoomDatabase {
 //                    MealDao mealDao = INSTANCE.getMealDao();
 //                    for(i=0; i<30; i++){
 //                        //change breast
-//                        if(random == true){
-//                            random = false;
-//                        }else{
-//                            random = true;
-//                        }
-//                        Meal meal = new Meal(changeName(name), ranDate, 120, random);
+            //String breast = "right";
+//                        if(breast.equals("right"){
+//                            breast = false;
+//                        }else if(breast.equals("left"){
+//                            breast = null;
+//                        }else{breast = "right;}
+//                        Meal meal = new Meal(changeName(name), ranDate, 120, breast);
 //                        mealDao.insertMeal(meal);
 //                    }
 //                    //make sure last entry for Zachary is the most recent
-//                    mealDao.insertMeal(new Meal(name,date,120, random));
+//                    mealDao.insertMeal(new Meal(name,date,120));
 //
 //                    return null;
 //                }
@@ -137,6 +138,7 @@ public abstract class AppDatabase extends RoomDatabase {
                     Date eventDate;
                     int nbTestDays = 10;
                     int maxSleepDuration = 6;
+                    String breast[] = {"right","left",null};
 
                     String names[] = {
                             "Zachary",
@@ -156,6 +158,7 @@ public abstract class AppDatabase extends RoomDatabase {
 
                         String randName = names[rand.nextInt(names.length)];
                         boolean randBool = rand.nextInt(2)==1;
+                        String randBreast = breast[rand.nextInt(breast.length)];
 
                         switch (e) {
                             case CHANGE:
@@ -173,7 +176,7 @@ public abstract class AppDatabase extends RoomDatabase {
                             case MEAL:
                             {
                                 MealDao mealDao = INSTANCE.getMealDao();
-                                Meal meal = new Meal(randName, eventDate, 120, randBool);
+                                Meal meal = new Meal(randName, eventDate, 120, randBreast);
                                 mealDao.insertMeal(meal);
                             }
                             break;
