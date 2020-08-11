@@ -24,7 +24,7 @@ import java.util.List;
 
 public class ChangeListActivity extends AppCompatActivity {
 
-    private IChangeRepository changeRepo = new ChangeDbRepository(this);
+
     private ChangeViewModel changeVM = null;
     ListView changeList =null;
     List<Change> changes = null;
@@ -33,8 +33,8 @@ public class ChangeListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_change_list);
 
+        setContentView(R.layout.activity_change_list);
         changeList = findViewById(R.id.lv_changeList);
         changeVM = ViewModelProviders.of(this).get(ChangeViewModel.class);
         changeVM.getObserverChangeByBaby().observe(this, new Observer<List<Change>>() {

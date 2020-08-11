@@ -49,8 +49,8 @@ public class ChangeAdapter extends ArrayAdapter<Change> {
             convertView = li.inflate(R.layout.style_list_change, parent, false);
         }
 
-        TextView tvDate = convertView.findViewById(R.id.tv_date);
-        TextView tvTime = convertView.findViewById(R.id.tv_time);
+        TextView tvDate = convertView.findViewById(R.id.tv_dateItem);
+        TextView tvTime = convertView.findViewById(R.id.tv_timeItem);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.iv_selle);
 
         Change change = getItem(position);
