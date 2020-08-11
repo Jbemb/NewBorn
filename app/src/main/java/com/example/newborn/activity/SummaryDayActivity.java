@@ -19,6 +19,8 @@ import com.example.newborn.change.bo.Change;
 import com.example.newborn.change.view_model.ChangeViewModel;
 import com.example.newborn.meal.bo.Meal;
 import com.example.newborn.meal.view_model.MealViewModel;
+import com.example.newborn.sleep.bo.Sleep;
+import com.example.newborn.sleep.view_model.SleepViewModel;
 import com.facebook.stetho.Stetho;
 
 import java.text.SimpleDateFormat;
@@ -38,6 +40,8 @@ public class SummaryDayActivity extends AppCompatActivity {
         //TODO get the date from the calendar
         TextView tvDay = findViewById(R.id.tv_day);
         final TextView tvMealSummary = findViewById(R.id.tv_meal_summary);
+        final TextView tvChangeSummary = findViewById(R.id.tv_change_summary);
+        final TextView tvSleepSummary = findViewById(R.id.tv_sleep_summary);
 
         String tvDateString = "10/08/2020";
         tvDay.setText(tvDateString);
@@ -50,13 +54,33 @@ public class SummaryDayActivity extends AppCompatActivity {
         c.add(Calendar.MINUTE, 59);
         dayEnd = c.getTime();
 
-        MealViewModel cvm = new ViewModelProvider(this).get(MealViewModel.class);
-        cvm.getMealByBabyByDate("Zachary", dayStart, dayEnd);//TODO mettre les dates Passer les dates en intent qu'on peut récupérer dans le list activity
-        cvm.getObserverMealByBabyByDate().observe(this, new Observer<List<Meal>>() {
+        MealViewModel mvm = new ViewModelProvider(this).get(MealViewModel.class);
+        mvm.getMealByBabyByDate("Zachary", dayStart, dayEnd);//TODO mettre les dates Passer les dates en intent qu'on peut récupérer dans le list activity
+        mvm.getObserverMealByBabyByDate().observe(this, new Observer<List<Meal>>() {
             @Override
             public void onChanged(List<Meal> meals) {
                 int listSize = meals.size();
                 tvMealSummary.setText(String.format("x %d", listSize));
+            }
+        });
+
+        ChangeViewModel cvm = new ViewModelProvider(this).get(ChangeViewModel.class);
+        cvm.getChangeByBabyByDate("Zachary", dayStart, dayEnd);//TODO mettre les dates Passer les dates en intent qu'on peut récupérer dans le list activity
+        cvm.getObserverChangeByBabyByDate().observe(this, new Observer<List<Change>>() {
+            @Override
+            public void onChanged(List<Change> changes) {
+                int listSize = changes.size();
+                tvChangeSummary.setText(String.format("x %d", listSize));
+            }
+        });
+
+        SleepViewModel svm = new ViewModelProvider(this).get(SleepViewModel.class);
+        svm.getSleepByBabyByDate("Zachary", dayStart, dayEnd);//TODO mettre les dates Passer les dates en intent qu'on peut récupérer dans le list activity
+        svm.getObserverSleepByBabyByDate().observe(this, new Observer<List<Sleep>>() {
+            @Override
+            public void onChanged(List<Sleep> sleeps) {
+                int listSize = sleeps.size();
+                tvSleepSummary.setText(String.format("x %d", listSize));
             }
         });
 

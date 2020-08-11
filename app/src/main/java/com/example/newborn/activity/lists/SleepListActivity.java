@@ -16,11 +16,16 @@ import com.example.newborn.R;
 import com.example.newborn.activity.AddModify.AddModifyMealActivity;
 import com.example.newborn.activity.AddModify.AddModifySleepActivity;
 import com.example.newborn.activity.MainActivity;
+import com.example.newborn.activity.SummaryDayActivity;
+import com.example.newborn.activity.lists.adapters.ChangeAdapter;
 import com.example.newborn.activity.lists.adapters.SleepAdapter;
+import com.example.newborn.change.bo.Change;
+import com.example.newborn.change.view_model.ChangeViewModel;
 import com.example.newborn.sleep.bo.Sleep;
 import com.example.newborn.sleep.view_model.SleepViewModel;
 import com.facebook.stetho.Stetho;
 
+import java.util.Date;
 import java.util.List;
 
 public class SleepListActivity extends AppCompatActivity {
@@ -35,14 +40,18 @@ public class SleepListActivity extends AppCompatActivity {
         Stetho.initializeWithDefaults(this);
         sleepList = findViewById(R.id.lv_sleeplist);
 
-        sleepVM = ViewModelProviders.of(this).get(SleepViewModel.class);
+        Intent intent = getIntent();
+        Date dayStart = (Date)intent.getSerializableExtra("dayStart");
+        Date dayEnd = (Date)intent.getSerializableExtra("dayEnd");
 
-        sleepVM.getObserverSleepByBaby().observe(this, new Observer<List<Sleep>>() {
+
+        SleepViewModel cvm = new ViewModelProvider(this).get(SleepViewModel.class);
+        cvm.getSleepByBabyByDate("Zachary", dayStart, dayEnd);//TODO mettre les dates Passer les dates en intent qu'on peut récupérer dans le list activity
+        cvm.getObserverSleepByBabyByDate().observe(this, new Observer<List<Sleep>>() {
             @Override
             public void onChanged(List<Sleep> sleeps) {
                 SleepListActivity.this.sleeps = sleeps;
-                sleepList.setAdapter(new SleepAdapter(SleepListActivity.this,R.layout.style_list_sleep,sleeps));
-            }
+                sleepList.setAdapter(new SleepAdapter(SleepListActivity.this,R.layout.style_list_sleep,sleeps));    }
         });
     }
 
@@ -58,6 +67,8 @@ public class SleepListActivity extends AppCompatActivity {
     }
 
     public void OnClickBack(View view) {
+        Intent intent = new Intent(this, SummaryDayActivity.class);
+        startActivity(intent);
     }
     //TODO links of the menu
 //    @Override

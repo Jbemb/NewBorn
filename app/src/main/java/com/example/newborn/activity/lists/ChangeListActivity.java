@@ -2,6 +2,7 @@ package com.example.newborn.activity.lists;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
@@ -13,13 +14,18 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.newborn.R;
+import com.example.newborn.activity.SummaryDayActivity;
 import com.example.newborn.activity.lists.adapters.ChangeAdapter;
 import com.example.newborn.activity.AddModify.AddModifyChangeActivity;
+import com.example.newborn.activity.lists.adapters.MealAdapter;
 import com.example.newborn.change.bo.Change;
 import com.example.newborn.change.repository.ChangeDbRepository;
 import com.example.newborn.change.repository.IChangeRepository;
 import com.example.newborn.change.view_model.ChangeViewModel;
+import com.example.newborn.meal.bo.Meal;
+import com.example.newborn.meal.view_model.MealViewModel;
 
+import java.util.Date;
 import java.util.List;
 
 public class ChangeListActivity extends AppCompatActivity {
@@ -36,13 +42,19 @@ public class ChangeListActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_change_list);
         changeList = findViewById(R.id.lv_changeList);
-        changeVM = ViewModelProviders.of(this).get(ChangeViewModel.class);
-        changeVM.getObserverChangeByBaby().observe(this, new Observer<List<Change>>() {
+
+        Intent intent = getIntent();
+        Date dayStart = (Date)intent.getSerializableExtra("dayStart");
+        Date dayEnd = (Date)intent.getSerializableExtra("dayEnd");
+
+
+        ChangeViewModel cvm = new ViewModelProvider(this).get(ChangeViewModel.class);
+        cvm.getChangeByBabyByDate("Zachary", dayStart, dayEnd);//TODO mettre les dates Passer les dates en intent qu'on peut récupérer dans le list activity
+        cvm.getObserverChangeByBabyByDate().observe(this, new Observer<List<Change>>() {
             @Override
             public void onChanged(List<Change> changes) {
-            ChangeListActivity.this.changes = changes;
-            changeList.setAdapter(new ChangeAdapter(ChangeListActivity.this,R.layout.style_list_change,changes));
-            }
+                ChangeListActivity.this.changes = changes;
+                changeList.setAdapter(new ChangeAdapter(ChangeListActivity.this,R.layout.style_list_change,changes));    }
         });
 
     }
@@ -85,5 +97,7 @@ public class ChangeListActivity extends AppCompatActivity {
     }
     //TODO add intent to go back
     public void OnClickBack(View view) {
+        Intent intent = new Intent(this, SummaryDayActivity.class);
+        startActivity(intent);
     }
 }
