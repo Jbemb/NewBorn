@@ -21,35 +21,35 @@ public class MealViewModel extends AndroidViewModel {
         mealRepo = new MealDbRepository(application);
     }
 
-    LiveData<List<Meal>> getObserverMealByBaby() {
+    public LiveData<List<Meal>> getObserverMealByBaby() {
         return mealRepo.getObserverMealByBaby();
     }
 
-    LiveData<List<Meal>> getObserverMealByBabyByDate() {
+    public LiveData<List<Meal>> getObserverMealByBabyByDate() {
         return mealRepo.getObserverMealByBabyByDate();
     }
 
-    LiveData<Meal> getObserverLastMealByBaby() {
+    public LiveData<Meal> getObserverLastMealByBaby() {
         return mealRepo.getObserverLastMealByBaby();
     }
 
-    void getMealByBabyByDate(String baby, Date date) {
+    public void getMealByBabyByDate(String baby, Date date) {
         mealRepo.getMealByBabyByDate(baby,date);
     }
 
-    void getLastMealByBaby(String baby) {
+    public void getLastMealByBaby(String baby) {
         mealRepo.getLastMealByBaby(baby);
     }
 
-    void insertMeal(Meal meal) {
+    public void insertMeal(Meal meal) {
         mealRepo.insertMeal(meal);
     }
 
-    void updateMeal(Meal meal) {
+    public void updateMeal(Meal meal) {
         mealRepo.updateMeal(meal);
     }
 
-    void deleteMeal(Meal meal) {
+    public void deleteMeal(Meal meal) {
         mealRepo.deleteMeal(meal);
     }
 }
