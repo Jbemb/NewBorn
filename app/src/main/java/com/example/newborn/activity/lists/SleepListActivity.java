@@ -61,7 +61,7 @@ public class SleepListActivity extends AppCompatActivity {
         return true;
     }
 
-    public void OnClickAddSleep(View view) {
+    public void OnClickAdd(View view) {
         Intent intent = new Intent(this, AddModifySleepActivity.class);
         startActivity(intent);
     }

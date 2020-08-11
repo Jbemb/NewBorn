@@ -54,7 +54,7 @@ public class MealListActivity extends AppCompatActivity {
         });
     }
 
-    public void OnClickAddMeal(View view) {
+    public void OnClickAdd(View view) {
         Intent intent = new Intent(this, AddModifyMealActivity.class);
         startActivity(intent);
     }

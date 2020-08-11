@@ -91,7 +91,7 @@ public class ChangeListActivity extends AppCompatActivity {
 //    }
 
     //TODO add intent to add activity
-    public void OnClickAddChange(View view) {
+    public void OnClickAdd(View view) {
         Intent intent = new Intent(this, AddModifyChangeActivity.class);
         startActivity(intent);
     }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:Android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.Android.com/apk/res-auto">
+    <font
+        Android:font="@font/montserrat_bold"
+        Android:fontStyle="normal"
+        Android:fontWeight="700"
+        app:font="@font/montserrat_bold"
+        app:fontStyle="normal"
+        app:fontWeight="700" />
+    <font
+        Android:font="@font/montserrat_bolditalic"
+        Android:fontStyle="italic"
+        Android:fontWeight="700"
+        app:font="@font/montserrat_bolditalic"
+        app:fontStyle="italic"
+        app:fontWeight="700" />
+
+</font-family>
