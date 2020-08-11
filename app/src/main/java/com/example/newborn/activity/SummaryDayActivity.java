@@ -73,7 +73,7 @@ public class SummaryDayActivity extends AppCompatActivity {
 
     public void onClickDetailsChange(View view) {
         Intent intentDay = new Intent(this, ChangeListActivity.class);
-        intentDay.putExtra("dayStart", dayStart);
+        intentDay.putExtra("dayStart",  dayStart);
         intentDay.putExtra("dayEnd", dayEnd);
         startActivity(intentDay);
     }

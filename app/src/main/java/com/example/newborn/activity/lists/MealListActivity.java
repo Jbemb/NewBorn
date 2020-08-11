@@ -12,6 +12,7 @@ import android.widget.ListView;
 
 import com.example.newborn.R;
 import com.example.newborn.activity.AddModify.AddModifyMealActivity;
+import com.example.newborn.activity.SummaryDayActivity;
 import com.example.newborn.activity.lists.adapters.ChangeAdapter;
 import com.example.newborn.activity.lists.adapters.MealAdapter;
 import com.example.newborn.change.bo.Change;
@@ -39,11 +40,12 @@ public class MealListActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        Date dayStart = intent.getParcelableExtra("dayStart");
-        Date dayEnd = intent.getParcelableExtra("dayEnd");
+        Date dayStart = (Date)intent.getSerializableExtra("dayStart");
+        Date dayEnd = (Date)intent.getSerializableExtra("dayEnd");
+
 
         MealViewModel cvm = new ViewModelProvider(this).get(MealViewModel.class);
-        cvm.getMealByBabyByDate("test", dayStart, dayEnd);//TODO mettre les dates Passer les dates en intent qu'on peut récupérer dans le list activity
+        cvm.getMealByBabyByDate("Zachary", dayStart, dayEnd);//TODO mettre les dates Passer les dates en intent qu'on peut récupérer dans le list activity
         cvm.getObserverMealByBabyByDate().observe(this, new Observer<List<Meal>>() {
             @Override
             public void onChanged(List<Meal> meals) {
@@ -58,5 +60,7 @@ public class MealListActivity extends AppCompatActivity {
     }
     //TODO add back function
     public void OnClickBack(View view) {
+        Intent intent = new Intent(this, SummaryDayActivity.class);
+        startActivity(intent);
     }
 }
