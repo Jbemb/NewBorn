@@ -44,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
-        android:text="QUANTITE: "
+        android:text="Quantité: "
         app:layout_constraintTop_toBottomOf="@id/title_list_meals"
         app:layout_constraintLeft_toRightOf="@id/tv_time_meal"/>
 
