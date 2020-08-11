@@ -40,28 +40,26 @@
         app:layout_constraintLeft_toRightOf="@id/tv_timeItem"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_modify"
+    <ImageButton
+        android:id="@+id/ib_modify"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="28dp"
-        android:onClick="onClickEditSleep"
         android:scaleType="fitXY"
-        android:src="@android:drawable/ic_menu_edit"
+        android:background="@android:drawable/ic_menu_edit"
         app:layout_constraintLeft_toRightOf="@id/tv_durationItem"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_delete"
+    <ImageButton
+        android:id="@+id/ib_delete"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="28dp"
-        android:onClick="onClickDeleteSleep"
         android:scaleType="fitXY"
-        android:src="@android:drawable/ic_menu_delete"
-        app:layout_constraintLeft_toRightOf="@id/iv_modify"
+        android:background="@android:drawable/ic_menu_delete"
+        app:layout_constraintLeft_toRightOf="@id/ib_modify"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

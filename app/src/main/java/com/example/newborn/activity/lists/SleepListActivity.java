@@ -9,9 +9,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ListView;
 
 import com.example.newborn.R;
+import com.example.newborn.activity.AddModify.AddModifyMealActivity;
+import com.example.newborn.activity.AddModify.AddModifySleepActivity;
 import com.example.newborn.activity.MainActivity;
 import com.example.newborn.activity.lists.adapters.SleepAdapter;
 import com.example.newborn.sleep.bo.Sleep;
@@ -47,6 +50,14 @@ public class SleepListActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
         return true;
+    }
+
+    public void OnClickAddSleep(View view) {
+        Intent intent = new Intent(this, AddModifySleepActivity.class);
+        startActivity(intent);
+    }
+
+    public void OnClickBack(View view) {
     }
     //TODO links of the menu
 //    @Override
