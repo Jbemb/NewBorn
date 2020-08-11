@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:Android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.Android.com/apk/res-auto">
+    <font
+        Android:font="@font/sniglet_regular"
+        Android:fontStyle="normal"
+        Android:fontWeight="500"
+        app:font="@font/sniglet_regular"
+        app:fontStyle="normal"
+        app:fontWeight="700" />
+    <font
+        Android:font="@font/sniglet_extrabold"
+        Android:fontStyle="normal"
+        Android:fontWeight="900"
+        app:font="@font/sniglet_extrabold"
+        app:fontStyle="italic"
+        app:fontWeight="700" />
+
+</font-family>

@@ -60,26 +60,24 @@
     </ListView>
 
     <ImageButton
-        android:id="@+id/ib_add_meal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/lv_meallist"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="170dp"
+        android:id="@+id/ib_add"
+        android:layout_width="69dp"
+        android:layout_height="66dp"
+        android:layout_marginLeft="204dp"
         android:layout_marginTop="20dp"
-        android:src="@android:drawable/ic_menu_add"
-        android:onClick="OnClickAddMeal"
-        />
+        android:onClick="OnClickAdd"
+        android:src="@drawable/add"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lv_meallist" />
 
     <ImageButton
         android:id="@+id/ib_back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ib_add_meal"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="170dp"
-        android:src="@android:drawable/ic_menu_revert"
+        android:layout_width="103dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="20dp"
         android:onClick="OnClickBack"
-        />
+        android:src="@drawable/back"
+        app:layout_constraintRight_toLeftOf="@+id/ib_add"
+        app:layout_constraintTop_toBottomOf="@id/lv_meallist" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
