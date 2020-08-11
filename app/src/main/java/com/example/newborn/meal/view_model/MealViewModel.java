@@ -33,8 +33,8 @@ public class MealViewModel extends AndroidViewModel {
         return mealRepo.getObserverLastMealByBaby();
     }
 
-    public void getMealByBabyByDate(String baby, Date date) {
-        mealRepo.getMealByBabyByDate(baby,date);
+    public void getMealByBabyByDate(String baby, Date dayStart, Date dayEnd) {
+        mealRepo.getMealByBabyByDate(baby,dayStart, dayEnd);
     }
 
     public void getLastMealByBaby(String baby) {

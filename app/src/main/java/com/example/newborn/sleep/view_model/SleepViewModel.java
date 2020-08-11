@@ -35,8 +35,8 @@ public class SleepViewModel extends AndroidViewModel {
         return sleepRepo.getObserverLastSleepByBaby();
     }
 
-    public void getSleepByBabyByDate(String baby, Date date) {
-        sleepRepo.getSleepByBabyByDate(baby, date);
+    public void getSleepByBabyByDate(String baby, Date dayStart, Date dayEnd) {
+        sleepRepo.getSleepByBabyByDate(baby, dayStart, dayEnd);
     }
 
     public void getLastSleepByBaby(String baby) {
