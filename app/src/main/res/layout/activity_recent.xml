@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activity.RecentActivity"
-    android:paddingRight="50dp"
+
     >
 
     <TextView
@@ -30,23 +30,24 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_recent" />
 
+<!--meal-->
+
     <ImageView
         android:id="@+id/iv_recent_meal"
         android:layout_width="121dp"
         android:layout_height="105dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="68dp"
         android:src="@drawable/bottle"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_today" />
-
 
     <TextView
         android:id="@+id/tv_meal_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="12dp"
         android:gravity="center"
         android:text="XXXX"
         android:textSize="30dp"
@@ -57,32 +58,74 @@
         android:id="@+id/tv_recent_meal_quantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="12dp"
         android:text="quantity last meal"
+        android:textSize="14dp"
         android:visibility="visible"
         app:layout_constraintLeft_toRightOf="@id/tv_meal_time"
         app:layout_constraintTop_toTopOf="@id/iv_recent_meal" />
 
-    <EditText
-        android:id="@+id/et_meal_quantity"
+    <TextView
+        android:id="@+id/tv_recent_boob"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginLeft="52dp"
+        android:text="breast"
+        android:textSize="14dp"
+        android:visibility="visible"
+        app:layout_constraintLeft_toRightOf="@+id/tv_meal_time"
+        app:layout_constraintTop_toBottomOf="@id/tv_recent_meal_quantity" />
+
+    <EditText
+        android:id="@+id/et_meal_quantity"
+        android:layout_width="124dp"
+        android:layout_height="43dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="36dp"
         android:text="quantité ml"
         android:visibility="visible"
         app:layout_constraintLeft_toRightOf="@+id/iv_recent_meal"
         app:layout_constraintTop_toBottomOf="@+id/tv_meal_time" />
 
-    <Button
+    <RadioGroup
+        android:id="@+id/rg_breast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintLeft_toRightOf="@id/iv_recent_meal"
+        app:layout_constraintTop_toBottomOf="@id/et_meal_quantity"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_left"
+            android:layout_width="91dp"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton"
+            android:text="Gauche"
+            tools:layout_editor_absoluteX="141dp"
+            tools:layout_editor_absoluteY="223dp" />
+
+        <RadioButton
+            android:id="@+id/rb_right"
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:onClick="checkButton"
+            android:text="Droit"
+            tools:layout_editor_absoluteX="241dp" />
+
+    </RadioGroup>
+
+    <!--change-->
+
+    <ImageButton
         android:id="@+id/btn_new_meal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="76dp"
         android:onClick="onClickAddMeal"
-        android:text="Nouveau"
+        android:src="@android:drawable/ic_menu_add"
         app:layout_constraintLeft_toRightOf="@id/et_meal_quantity"
         app:layout_constraintTop_toTopOf="@id/tv_recent_meal_quantity" />
 
@@ -90,66 +133,126 @@
         android:id="@+id/iv_recent_change"
         android:layout_width="121dp"
         android:layout_height="105dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="92dp"
         android:src="@drawable/diaper"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_recent_meal" />
+
+    <!--sleep-->
 
     <TextView
         android:id="@+id/tv_change_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="175dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="44dp"
         android:gravity="center"
         android:text="XXXX"
         android:textSize="30dp"
         app:layout_constraintLeft_toRightOf="@id/iv_recent_change"
-        app:layout_constraintTop_toTopOf="@id/btn_new_meal" />
+        app:layout_constraintTop_toBottomOf="@id/rg_breast" />
 
-    <Button
+    <TextView
+        android:id="@+id/tv_selle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="72dp"
+        android:text="selle"
+        android:textSize="14dp"
+        app:layout_constraintLeft_toRightOf="@+id/tv_change_time"
+        app:layout_constraintTop_toBottomOf="@+id/btn_new_meal" />
+
+    <CheckBox
+        android:id="@+id/cb_selle"
+        android:layout_width="79dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="24dp"
+        android:text="selle"
+        app:layout_constraintLeft_toRightOf="@+id/iv_recent_change"
+        app:layout_constraintTop_toBottomOf="@id/tv_change_time" />
+
+    <ImageButton
         android:id="@+id/btn_new_change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginLeft="68dp"
+        android:layout_marginTop="28dp"
         android:onClick="onClickAddChange"
-        android:text="Nouveau"
+        android:src="@android:drawable/ic_menu_add"
         app:layout_constraintLeft_toRightOf="@id/tv_change_time"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_selle" />
 
     <ImageView
         android:id="@+id/iv_recent_sleep"
         android:layout_width="121dp"
         android:layout_height="105dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="88dp"
         android:src="@drawable/bed"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_recent_change" />
+
 
     <TextView
         android:id="@+id/tv_sleep_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
-        android:textSize="30dp"
         android:text="XXXX"
+        android:textSize="30dp"
         app:layout_constraintLeft_toRightOf="@id/iv_recent_sleep"
-        app:layout_constraintTop_toTopOf="@id/btn_new_sleep" />
+        app:layout_constraintTop_toTopOf="@id/iv_recent_sleep" />
 
-    <Button
-        android:id="@+id/btn_new_sleep"
+    <TextView
+        android:id="@+id/tv_sleep_duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="132dp"
-        android:onClick="onClickAddSleep"
-        android:text="Nouveau"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="duration"
+        android:textSize="14dp"
         app:layout_constraintLeft_toRightOf="@id/tv_sleep_time"
+        app:layout_constraintTop_toTopOf="@id/iv_recent_sleep" />
+
+    <TextView
+        android:id="@+id/tv_sleep_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="16dp"
+        android:text="zzzz"
+        android:textSize="30dp"
+        app:layout_constraintLeft_toRightOf="@+id/iv_recent_sleep"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sleep_time" />
+
+    <ImageButton
+        android:id="@+id/btn_new_sleep"
+        android:layout_width="33dp"
+        android:layout_height="29dp"
+        android:layout_marginLeft="44dp"
+        android:layout_marginTop="20dp"
+        android:onClick="onClickStartSleep"
+        android:src="@drawable/ic_play_button"
+
+        app:layout_constraintLeft_toRightOf="@id/tv_sleep_count"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sleep_time" />
+
+    <ImageButton
+        android:id="@+id/btn_stop_sleep"
+        android:layout_width="43dp"
+        android:layout_height="35dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="144dp"
+        android:onClick="onClickEndSleep"
+        android:src="@drawable/ic_baseline_stop_24"
+        app:layout_constraintLeft_toRightOf="@id/tv_sleep_count"
         app:layout_constraintTop_toBottomOf="@+id/btn_new_change" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

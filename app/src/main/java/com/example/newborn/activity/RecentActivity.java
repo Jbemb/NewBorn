@@ -23,6 +23,12 @@ public class RecentActivity extends AppCompatActivity {
     public void onClickAddChange(View view) {
     }
 
-    public void onClickAddSleep(View view) {
+    public void checkButton(View view) {
+    }
+
+    public void onClickEndSleep(View view) {
+    }
+
+    public void onClickStartSleep(View view) {
     }
 }
