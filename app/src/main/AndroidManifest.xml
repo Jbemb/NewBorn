@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.newborn">
+package="com.example.newborn">
 
-    <application
-        android:allowBackup="true"
-        android:icon="@drawable/logo"
-        android:label="IZZY BABY"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".activity.AddModify.AddModifyMealActivity"></activity>
-        <activity android:name=".activity.lists.MealListActivity" />
-        <activity android:name=".activity.AddModify.AddModifyChangeActivity" />
-        <activity android:name=".activity.lists.SleepListActivity" />
-        <activity android:name=".activity.lists.ChangeListActivity" />
-        <activity android:name=".activity.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<application
+    android:allowBackup="true"
+    android:icon="@drawable/logo"
+    android:label="IZZY BABY"
+    android:roundIcon="@mipmap/ic_launcher_round"
+    android:supportsRtl="true"
+    android:theme="@style/AppTheme">
+    <activity android:name=".activity.AddModify.AddModifyMealActivity"></activity>
+    <activity android:name=".activity.lists.MealListActivity" />
+    <activity android:name=".activity.AddModify.AddModifyChangeActivity" />
+    <activity android:name=".activity.lists.SleepListActivity" />
+    <activity android:name=".activity.lists.ChangeListActivity" />
+    <activity android:name=".activity.SummaryDayActivity" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
+    <activity android:name=".activity.MainActivity">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+
+</application>
 
 </manifest>

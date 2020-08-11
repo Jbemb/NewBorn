@@ -33,7 +33,7 @@ public class ChangeViewModel extends AndroidViewModel {
         return changeRepo.getObserverLastChangeByBaby();
     }
 
-    void getChangeByBabyByDate(String baby, Date dayStart, Date dayEnd) {
+    public void getChangeByBabyByDate(String baby, Date dayStart, Date dayEnd) {
         changeRepo.getChangeByBabyByDate(baby, dayStart, dayEnd);
     }
 
