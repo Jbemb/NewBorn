@@ -12,6 +12,7 @@ import android.widget.ListView;
 import com.example.newborn.R;
 import com.example.newborn.activity.AddModify.AddModifyMealActivity;
 import com.example.newborn.activity.lists.adapters.ChangeAdapter;
+import com.example.newborn.activity.lists.adapters.MealAdapter;
 import com.example.newborn.meal.bo.Meal;
 import com.example.newborn.meal.view_model.MealViewModel;
 
@@ -34,7 +35,7 @@ public class MealListActivity extends AppCompatActivity {
             @Override
             public void onChanged(List<Meal> meals) {
                 MealListActivity.this.meals = meals;
-                mealList.setAdapter(new ChangeAdapter(MealListActivity.this,R.layout.style_list_meal,meals));    }
+                mealList.setAdapter(new MealAdapter(MealListActivity.this,R.layout.style_list_meal,meals));    }
         });
     }
 

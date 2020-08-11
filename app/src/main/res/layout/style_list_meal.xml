@@ -53,26 +53,28 @@
         app:layout_constraintLeft_toRightOf="@id/tv_quantityItem"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_modifyMeal"
+    <ImageButton
+        android:id="@+id/ib_modifyMeal"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="28dp"
         android:scaleType="fitXY"
-        android:src="@android:drawable/ic_menu_edit"
+        android:background="@android:drawable/ic_menu_edit"
         app:layout_constraintLeft_toRightOf="@id/tv_breastItem"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
-    <ImageView
-        android:id="@+id/iv_deleteMeal"
+    <ImageButton
+        android:id="@+id/ib_deleteMeal"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="28dp"
         android:scaleType="fitXY"
-        android:src="@android:drawable/ic_menu_delete"
-        app:layout_constraintLeft_toRightOf="@id/iv_modifyMeal"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:background="@android:drawable/ic_menu_delete"
+        app:layout_constraintLeft_toRightOf="@id/ib_modifyMeal"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

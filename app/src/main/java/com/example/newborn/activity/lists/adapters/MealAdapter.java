@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import com.example.newborn.activity.lists.MealListActivity;
 import com.example.newborn.meal.bo.Meal;
 import com.example.newborn.meal.repository.IMealRepository;
 import com.example.newborn.meal.repository.MealDbRepository;
+import com.facebook.stetho.Stetho;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -27,10 +29,12 @@ import java.util.List;
 
 public class MealAdapter extends ArrayAdapter<Meal> {
 
-    private IMealRepository mealRepo = new MealDbRepository(getContext());
+    private IMealRepository mealRepo = null;
 
     public MealAdapter(@NonNull Context context, int resource, @NonNull List<Meal> objects) {
         super(context, resource, objects);
+        Stetho.initializeWithDefaults(context);
+        mealRepo = new MealDbRepository(context);
     }
 
     @NonNull
@@ -69,7 +73,7 @@ public class MealAdapter extends ArrayAdapter<Meal> {
             }
         }
 
-        ImageView delete = convertView.findViewById(R.id.iv_deleteMeal);
+        ImageButton delete = convertView.findViewById(R.id.ib_deleteMeal);
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,8 +85,8 @@ public class MealAdapter extends ArrayAdapter<Meal> {
             }
         });
 
-        ImageView modify = convertView.findViewById(R.id.iv_modifyMeal);
-        delete.setOnClickListener(new View.OnClickListener() {
+        ImageButton modify = convertView.findViewById(R.id.ib_modifyMeal);
+        modify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Meal meal = getItem(position);
