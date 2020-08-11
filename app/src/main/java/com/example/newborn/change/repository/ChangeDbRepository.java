@@ -51,17 +51,18 @@ public class ChangeDbRepository implements IChangeRepository{
     }
 
     @Override
-    public void getChangeByBabyByDate(String baby, Date date) {
-        DoubleParamAsync babyDateParams = new DoubleParamAsync(baby, date);
+    public void getChangeByBabyByDate(String baby, Date dayStart, Date dayEnd) {
+        DoubleParamAsync babyDateParams = new DoubleParamAsync(baby, dayStart, dayEnd);
 
         new AsyncTask<DoubleParamAsync,Void,List<Change>>() {
 
             @Override
             protected List<Change> doInBackground(DoubleParamAsync... babyDateParams) {
                 String babyPara = babyDateParams[0].baby;
-                Date datePara = babyDateParams[0].date;
+                Date dayStartPara = babyDateParams[0].dayStart;
+                Date dayEndPara = babyDateParams[0].dayEnd;
 
-                return dao.getChangeByBabyByDate(babyPara, datePara);
+                return dao.getChangeByBabyByDate(babyPara, dayStartPara, dayEndPara);
             }
 
             @Override

@@ -14,7 +14,7 @@ public interface IMealRepository {
     LiveData<List<Meal>> getObserverMealByBabyByDate();
     LiveData<Meal> getObserverLastMealByBaby();
 
-    void getMealByBabyByDate (String baby, Date date);
+    void getMealByBabyByDate (String baby, Date dayStart, Date dayEnd);
 
     void getLastMealByBaby (String baby);
 

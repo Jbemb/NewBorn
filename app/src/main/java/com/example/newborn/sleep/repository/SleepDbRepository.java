@@ -53,17 +53,18 @@ public class SleepDbRepository implements ISleepRepository {
     }
 
     @Override
-    public void getSleepByBabyByDate(String baby, Date date) {
-        DoubleParamAsync babyDateParams = new DoubleParamAsync(baby, date);
+    public void getSleepByBabyByDate(String baby, Date dayStart, Date dayEnd) {
+        DoubleParamAsync babyDateParams = new DoubleParamAsync(baby, dayStart, dayEnd);
 
         new AsyncTask<DoubleParamAsync,Void,List<Sleep>>() {
 
             @Override
             protected List<Sleep> doInBackground(DoubleParamAsync... babyDateParams) {
                 String babyPara = babyDateParams[0].baby;
-                Date datePara = babyDateParams[0].date;
+                Date dayStartPara = babyDateParams[0].dayStart;
+                Date dayEndPara = babyDateParams[0].dayEnd;
 
-                return dao.getSleepByBabyByDate(babyPara, datePara);
+                return dao.getSleepByBabyByDate(babyPara, dayStartPara, dayEndPara);
             }
 
             @Override

@@ -13,7 +13,7 @@ public interface ISleepRepository {
     LiveData<List<Sleep>> getObserverSleepByBabyByDate();
     LiveData<Sleep> getObserverLastSleepByBaby();
 
-    void getSleepByBabyByDate (String baby, Date date);
+    void getSleepByBabyByDate (String baby, Date dayStart, Date dayEnd);
 
     void getLastSleepByBaby (String baby);
 

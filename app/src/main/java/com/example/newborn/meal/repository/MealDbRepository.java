@@ -53,17 +53,18 @@ public class MealDbRepository implements IMealRepository {
     }
 
     @Override
-    public void getMealByBabyByDate(String baby, Date date) {
-        DoubleParamAsync babyDateParams = new DoubleParamAsync(baby, date);
+    public void getMealByBabyByDate(String baby, Date dayStart, Date dayEnd) {
+        DoubleParamAsync babyDateParams = new DoubleParamAsync(baby, dayStart, dayEnd);
 
         new AsyncTask<DoubleParamAsync,Void,List<Meal>>() {
 
             @Override
             protected List<Meal> doInBackground(DoubleParamAsync... babyDateParams) {
                 String babyPara = babyDateParams[0].baby;
-                Date datePara = babyDateParams[0].date;
+                Date dayStartPara = babyDateParams[0].dayStart;
+                Date dayEndPara = babyDateParams[0].dayEnd;
 
-                return dao.getMealByBabyByDate(babyPara, datePara);
+                return dao.getMealByBabyByDate(babyPara, dayStartPara, dayEndPara);
             }
 
             @Override

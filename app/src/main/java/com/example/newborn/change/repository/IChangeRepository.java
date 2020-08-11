@@ -13,7 +13,7 @@ public interface IChangeRepository {
     LiveData<List<Change>> getObserverChangeByBabyByDate();
     LiveData<Change> getObserverLastChangeByBaby();
 
-    void getChangeByBabyByDate (String baby, Date date);
+    void getChangeByBabyByDate (String baby, Date dayStart, Date dayEnd);
 
     void getLastChangeByBaby (String baby);
 
