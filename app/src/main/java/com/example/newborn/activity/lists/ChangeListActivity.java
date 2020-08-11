@@ -25,8 +25,6 @@ import java.util.List;
 public class ChangeListActivity extends AppCompatActivity {
 
     private IChangeRepository changeRepo = new ChangeDbRepository(this);
-    //static?
-    private Change change = null;
     private ChangeViewModel changeVM = null;
     ListView changeList =null;
     List<Change> changes = null;
@@ -47,13 +45,6 @@ public class ChangeListActivity extends AppCompatActivity {
             }
         });
 
-        //get Change object when it is clicked on
-        changeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                change = changes.get(i);
-            }
-        });
     }
 
     @Override
@@ -86,19 +77,6 @@ public class ChangeListActivity extends AppCompatActivity {
 //                return super.onOptionsItemSelected(item);
 //        }
 //    }
-
-    public void onClickEditChange(View view){
-        //send in intent to Edit page
-        Intent intent = new Intent(this, AddModifyChangeActivity.class);
-        intent.putExtra("modifyChange", change);
-        startActivity(intent);
-    }
-
-    public void onClickDeleteChange(View view){
-        //delete item
-        changeRepo.deleteChange(change);
-        Toast.makeText(this, "Suprimé", Toast.LENGTH_LONG).show();
-    }
 
     //TODO add intent to add activity
     public void OnClickAddChange(View view) {

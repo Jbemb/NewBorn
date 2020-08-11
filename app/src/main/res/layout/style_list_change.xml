@@ -43,28 +43,26 @@
         app:layout_constraintTop_toTopOf="parent" />
     <!--TODO choose icon for poop-->
 
-    <ImageView
-        android:id="@+id/iv_modifyChange"
+    <ImageButton
+        android:id="@+id/ib_modifyChange"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="28dp"
-        android:onClick="onClickEditChange"
         android:scaleType="fitXY"
-        android:src="@android:drawable/ic_menu_edit"
+        android:background="@android:drawable/ic_menu_edit"
         app:layout_constraintLeft_toRightOf="@id/iv_selle"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_deleteChange"
+    <ImageButton
+        android:id="@+id/ib_deleteChange"
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="28dp"
-        android:onClick="onClickDeleteChange"
         android:scaleType="fitXY"
-        android:src="@android:drawable/ic_menu_delete"
-        app:layout_constraintLeft_toRightOf="@id/iv_modifyChange"
+        android:background="@android:drawable/ic_menu_delete"
+        app:layout_constraintLeft_toRightOf="@id/ib_modifyChange"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
