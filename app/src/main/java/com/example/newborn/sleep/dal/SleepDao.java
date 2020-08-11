@@ -21,10 +21,10 @@ public interface SleepDao {
     @Query("SELECT * FROM Sleep WHERE baby = :baby")
     LiveData<List<Sleep>> getSleepByBaby(String baby);
 
-    @Query("SELECT * FROM Sleep WHERE baby = :baby AND startTime = :date")
-    List<Sleep> getSleepByBabyByDate(String baby, Date date);
+    @Query("SELECT * FROM Sleep WHERE (baby = :baby) AND (startTime BETWEEN :dayStart AND :dayEnd)")
+    List<Sleep> getSleepByBabyByDate(String baby, Date dayStart, Date dayEnd);
 
-    @Query("SELECT * FROM Sleep WHERE baby = :baby ORDER BY id DESC LIMIT 1 ")
+    @Query("SELECT * FROM Sleep WHERE baby = :baby ORDER BY startTime DESC LIMIT 1 ")
     Sleep getLastSleepByBaby(String baby);
 
     @Update
