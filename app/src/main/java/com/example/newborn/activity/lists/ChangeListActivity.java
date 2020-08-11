@@ -97,7 +97,6 @@ public class ChangeListActivity extends AppCompatActivity {
     public void onClickDeleteChange(View view){
         //delete item
         changeRepo.deleteChange(change);
-
         Toast.makeText(this, "Suprimé", Toast.LENGTH_LONG).show();
     }
 
