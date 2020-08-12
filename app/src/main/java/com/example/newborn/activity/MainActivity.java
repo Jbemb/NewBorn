@@ -33,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
                 intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 return true;
-//            case R.id.action_activites_recentes:
-//                intent = new Intent(this, RecentActivitiesActivity.class);
-//                startActivity(intent);
-//                return true;
+            case R.id.action_activites_recentes:
+                intent = new Intent(this, RecentActivity.class);
+                startActivity(intent);
+                return true;
             case R.id.action_bilan:
                 intent = new Intent(this, SummaryDayActivity.class);
                 startActivity(intent);
