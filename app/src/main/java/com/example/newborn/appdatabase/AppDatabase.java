@@ -31,6 +31,10 @@ enum TestEventName {
     SLEEP
 }
 
+/**
+ * Created by Janer
+ * Implemented by Janet and Amandine
+ */
 @Database(entities = {Meal.class, Change.class, Sleep.class}, exportSchema = false, version = 1)
 @TypeConverters({Converters.class})
 public abstract class AppDatabase extends RoomDatabase {
@@ -68,12 +72,14 @@ public abstract class AppDatabase extends RoomDatabase {
             new AsyncTask<AppDatabase,Void,Void>(){
                 @Override
                 protected Void doInBackground(AppDatabase... appDatabases) {
+
                     Random rand = new Random();
                     Calendar calendar = Calendar.getInstance();
                     Date dateNow = new Date();
                     Date eventDate;
                     int nbTestDays = 10;
                     int maxSleepDuration = 6;
+
                     String breast[] = {"right","left",null};
 
                     String names[] = {
@@ -83,12 +89,13 @@ public abstract class AppDatabase extends RoomDatabase {
 
                     calendar.setTime(dateNow);
                     calendar.add(Calendar.DAY_OF_YEAR, -nbTestDays);
-
+                    //Data on sleep, meal and change are generated for a range of 10 days
                     for (eventDate = calendar.getTime();
                          eventDate.before(dateNow);
                          calendar.add(Calendar.HOUR_OF_DAY, rand.nextInt(3)+1),
                                  eventDate = calendar.getTime())
                     {
+                        //For the random day/time, a random event (meal, sleep or change) is picked
                         TestEventName e = TestEventName
                                 .values()[new Random().nextInt(TestEventName.values().length)];
 
@@ -96,6 +103,7 @@ public abstract class AppDatabase extends RoomDatabase {
                         boolean randBool = rand.nextInt(2)==1;
                         String randBreast = breast[rand.nextInt(breast.length)];
 
+                        //Data fixtures depending on the random event
                         switch (e) {
                             case CHANGE:
                             {

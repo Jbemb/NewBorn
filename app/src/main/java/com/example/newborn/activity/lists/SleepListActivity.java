@@ -16,6 +16,7 @@ import com.example.newborn.R;
 import com.example.newborn.activity.AddModify.AddModifyMealActivity;
 import com.example.newborn.activity.AddModify.AddModifySleepActivity;
 import com.example.newborn.activity.MainActivity;
+import com.example.newborn.activity.RecentActivity;
 import com.example.newborn.activity.SummaryDayActivity;
 import com.example.newborn.activity.lists.adapters.ChangeAdapter;
 import com.example.newborn.activity.lists.adapters.SleepAdapter;
@@ -28,6 +29,10 @@ import com.facebook.stetho.Stetho;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Created and implemented by Janet
+ *
+ */
 public class SleepListActivity extends AppCompatActivity {
 
     private SleepViewModel sleepVM = null;
@@ -46,7 +51,8 @@ public class SleepListActivity extends AppCompatActivity {
 
 
         SleepViewModel cvm = new ViewModelProvider(this).get(SleepViewModel.class);
-        cvm.getSleepByBabyByDate("Zachary", dayStart, dayEnd);//TODO mettre les dates Passer les dates en intent qu'on peut récupérer dans le list activity
+        cvm.getSleepByBabyByDate("Zachary", dayStart, dayEnd);
+        //TODO mettre les dates Passer les dates en intent qu'on peut récupérer dans le list activity
         cvm.getObserverSleepByBabyByDate().observe(this, new Observer<List<Sleep>>() {
             @Override
             public void onChanged(List<Sleep> sleeps) {
@@ -71,28 +77,28 @@ public class SleepListActivity extends AppCompatActivity {
         startActivity(intent);
     }
     //TODO links of the menu
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        Intent intent;
-//        switch (item.getItemId()) {
-//            case R.id.action_accueil:
-//                intent = new Intent(this, MainActivity.class);
-//                startActivity(intent);
-//                return true;
-//            case R.id.action_activites_recentes:
-//                intent = new Intent(this, RecentActivitiesActivity.class);
-//                startActivity(intent);
-//                return true;
-//            case R.id.action_bilan:
-//                intent = new Intent(this, SummaryActivity.class);
-//                startActivity(intent);
-//                return true;
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_accueil:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_activites_recentes:
+                intent = new Intent(this, RecentActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_bilan:
+                intent = new Intent(this, SummaryDayActivity.class);
+                startActivity(intent);
+                return true;
 //            case R.id.action_parametres:
 //                intent = new Intent(this, ParameterActivity.class);
 //                startActivity(intent);
 //                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
-//    }
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
 }

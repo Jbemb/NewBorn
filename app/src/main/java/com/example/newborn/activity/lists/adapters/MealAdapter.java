@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +26,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Created and implemented by Janet
+ * This class controls the list to be displayed
+ */
 public class MealAdapter extends ArrayAdapter<Meal> {
 
     private IMealRepository mealRepo = null;

@@ -26,6 +26,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Created and implemented by Janet
+ * This class controls the list to be displayed
+ */
 public class ChangeAdapter extends ArrayAdapter<Change> {
     private IChangeRepository changeRepo = null;
 
@@ -67,7 +71,7 @@ public class ChangeAdapter extends ArrayAdapter<Change> {
             public void onClick(View view) {
                 Change change = getItem(position);
                 changeRepo.deleteChange(change);
-                Toast.makeText(getContext(), "Suprimé", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Supprimé", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getContext(), ChangeListActivity.class);
                 getContext().startActivity(intent);
             }

@@ -2,7 +2,6 @@ package com.example.newborn.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.DatePickerDialog;
@@ -12,13 +11,11 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.newborn.R;
 import com.example.newborn.activity.lists.ChangeListActivity;
 import com.example.newborn.activity.lists.MealListActivity;
 import com.example.newborn.activity.lists.SleepListActivity;
-import com.example.newborn.activity.lists.adapters.MealAdapter;
 import com.example.newborn.change.bo.Change;
 import com.example.newborn.change.view_model.ChangeViewModel;
 import com.example.newborn.meal.bo.Meal;
@@ -33,27 +30,36 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Created and implemented by Amandine
+ * This class allows to display the summary of the activities for a certain day
+ */
 public class SummaryDayActivity extends AppCompatActivity {
+
     private Date dayStart = null;
     private Date dayEnd  = null;
     private Calendar cal = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary_day);
         Stetho.initializeWithDefaults(this);
 
-        //TODO get the date from the calendar
-        TextView tvDay = findViewById(R.id.tv_day);
+        //Initiate the layout variables
+        final TextView tvDay = findViewById(R.id.tv_day);
         final TextView tvMealSummary = findViewById(R.id.tv_meal_summary);
         final TextView tvChangeSummary = findViewById(R.id.tv_change_summary);
         final TextView tvSleepSummary = findViewById(R.id.tv_sleep_summary);
 
-        //Create the starting of the day and its ending
+        //DAY START AND DAY END
+        //Get the date parameters sent by other activities or the calendar
         Intent intentSummary = getIntent();
         dayStart = (Date)intentSummary.getSerializableExtra("dayStart");
         dayEnd = (Date)intentSummary.getSerializableExtra("dayEnd");
 
+        //If no date parameters were sent by other activities or the calendar
+        //the default date is today
         if (dayStart==null && dayEnd==null) {
             cal = Calendar.getInstance();
             this.resetToMidnight(cal);
@@ -62,13 +68,13 @@ public class SummaryDayActivity extends AppCompatActivity {
             cal.add(Calendar.MINUTE, 59);
             dayEnd = cal.getTime();
         }
-
+        //Set the display of the date
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         String tvDateString = dateFormat.format(dayStart);
         tvDay.setText(tvDateString);
 
         MealViewModel mvm = new ViewModelProvider(this).get(MealViewModel.class);
-        mvm.getMealByBabyByDate("Zachary", dayStart, dayEnd);//TODO mettre les dates Passer les dates en intent qu'on peut récupérer dans le list activity
+        mvm.getMealByBabyByDate("Zachary", dayStart, dayEnd);
         mvm.getObserverMealByBabyByDate().observe(this, new Observer<List<Meal>>() {
             @Override
             public void onChanged(List<Meal> meals) {
@@ -78,7 +84,7 @@ public class SummaryDayActivity extends AppCompatActivity {
         });
 
         ChangeViewModel cvm = new ViewModelProvider(this).get(ChangeViewModel.class);
-        cvm.getChangeByBabyByDate("Zachary", dayStart, dayEnd);//TODO mettre les dates Passer les dates en intent qu'on peut récupérer dans le list activity
+        cvm.getChangeByBabyByDate("Zachary", dayStart, dayEnd);
         cvm.getObserverChangeByBabyByDate().observe(this, new Observer<List<Change>>() {
             @Override
             public void onChanged(List<Change> changes) {
@@ -88,7 +94,7 @@ public class SummaryDayActivity extends AppCompatActivity {
         });
 
         SleepViewModel svm = new ViewModelProvider(this).get(SleepViewModel.class);
-        svm.getSleepByBabyByDate("Zachary", dayStart, dayEnd);//TODO mettre les dates Passer les dates en intent qu'on peut récupérer dans le list activity
+        svm.getSleepByBabyByDate("Zachary", dayStart, dayEnd);
         svm.getObserverSleepByBabyByDate().observe(this, new Observer<List<Sleep>>() {
             @Override
             public void onChanged(List<Sleep> sleeps) {
@@ -107,6 +113,13 @@ public class SummaryDayActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Function allowing to use a calendar the pick the date
+     * The picked date has the time corresponding to the actual time
+     * To allow the user to set the time one wants, the time of the picked
+     * date is reset by the static function SummaryDayActivity.resetToMidnight
+     * @param tvCalendar
+     */
     private void showDateDialog(ImageButton tvCalendar) {
         final Calendar cal = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener(){
@@ -134,6 +147,10 @@ public class SummaryDayActivity extends AppCompatActivity {
                 cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show();
     }
 
+    /**
+     * Function to go to the list of meals
+     * @param view
+     */
     public void onClickDetailsMeal(View view) {
         Intent intentDay = new Intent(this, MealListActivity.class);
         intentDay.putExtra("dayStart", dayStart);
@@ -141,6 +158,10 @@ public class SummaryDayActivity extends AppCompatActivity {
         startActivity(intentDay);
     }
 
+    /**
+     * Function to go to the list of changes
+     * @param view
+     */
     public void onClickDetailsChange(View view) {
         Intent intentDay = new Intent(this, ChangeListActivity.class);
         intentDay.putExtra("dayStart",  dayStart);
@@ -148,6 +169,10 @@ public class SummaryDayActivity extends AppCompatActivity {
         startActivity(intentDay);
     }
 
+    /**
+     * Function to go to the list of sleeps
+     * @param view
+     */
     public void onClickDetailsSleep(View view) {
         Intent intentDay = new Intent(this, SleepListActivity.class);
         intentDay.putExtra("dayStart", dayStart);
@@ -155,6 +180,10 @@ public class SummaryDayActivity extends AppCompatActivity {
         startActivity(intentDay);
     }
 
+    /**
+     * Function to reset the time at midnight
+     * @param cal
+     */
     public static void resetToMidnight(Calendar cal) {
         cal.set(Calendar.HOUR_OF_DAY, 0);
         cal.set(Calendar.MINUTE, 0);

@@ -15,22 +15,20 @@ import androidx.annotation.Nullable;
 
 import com.example.newborn.R;
 import com.example.newborn.activity.AddModify.AddModifyChangeActivity;
-import com.example.newborn.activity.lists.ChangeListActivity;
 import com.example.newborn.activity.lists.SleepListActivity;
-import com.example.newborn.change.bo.Change;
 import com.example.newborn.sleep.bo.Sleep;
 import com.example.newborn.sleep.repository.ISleepRepository;
 import com.example.newborn.sleep.repository.SleepDbRepository;
 import com.facebook.stetho.Stetho;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Duration;
-import java.util.Date;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Created and implemented by Amandine
+ * This class controls the list to be displayed
+ */
 public class SleepAdapter extends ArrayAdapter<Sleep> {
     private ISleepRepository sleepRepo = null;
     public SleepAdapter(@NonNull Context context, int resource, @NonNull List<Sleep> objects) {
@@ -69,6 +67,7 @@ public class SleepAdapter extends ArrayAdapter<Sleep> {
 
         TextView tvDuration = convertView.findViewById(R.id.tv_durationItem);
 
+        //Set the way the duration is displayed depending on its value
         if (duration < 60) {
             tvDuration.setText(duration + " min");
         } else {
@@ -77,6 +76,7 @@ public class SleepAdapter extends ArrayAdapter<Sleep> {
             tvDuration.setText(hours + " h " + minutes);
         }
 
+        //Action of the delete button
         ImageButton delete = convertView.findViewById(R.id.ib_delete);
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +89,7 @@ public class SleepAdapter extends ArrayAdapter<Sleep> {
             }
         });
 
+        //Action of the edit button
         ImageButton modify = convertView.findViewById(R.id.ib_modify);
         modify.setOnClickListener(new View.OnClickListener() {
             @Override
