@@ -51,6 +51,8 @@ public class Sleep implements Parcelable {
     protected Sleep(Parcel in) {
         id = in.readInt();
         baby = in.readString();
+        startTime = new Date(in.readLong());
+        endTime = new Date(in.readLong());
     }
 
     public static final Creator<Sleep> CREATOR = new Creator<Sleep>() {
@@ -118,5 +120,7 @@ public class Sleep implements Parcelable {
     public void writeToParcel(Parcel parcel, int i) {
         parcel.writeInt(id);
         parcel.writeString(baby);
+        parcel.writeLong(startTime.getTime());
+        parcel.writeLong(endTime.getTime());
     }
 }

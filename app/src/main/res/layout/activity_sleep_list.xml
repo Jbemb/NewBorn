@@ -68,6 +68,7 @@
         android:layout_marginTop="20dp"
         android:onClick="OnClickAdd"
         android:src="@drawable/add1"
+        android:background="?attr/selectableItemBackgroundBorderless"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lv_sleeplist" />
 
@@ -78,6 +79,7 @@
         android:layout_marginTop="20dp"
         android:onClick="OnClickBack"
         android:src="@drawable/back1"
+        android:background="?attr/selectableItemBackgroundBorderless"
         app:layout_constraintRight_toLeftOf="@+id/ib_add"
         app:layout_constraintTop_toBottomOf="@id/lv_sleeplist" />
 

@@ -47,6 +47,7 @@ public class Change implements Parcelable {
         baby = in.readString();
         byte tmpIsPoop = in.readByte();
         isPoop = tmpIsPoop == 0 ? null : tmpIsPoop == 1;
+        changeTime = new Date(in.readLong());
     }
 
     public static final Creator<Change> CREATOR = new Creator<Change>() {
@@ -114,5 +115,6 @@ public class Change implements Parcelable {
         parcel.writeInt(id);
         parcel.writeString(baby);
         parcel.writeByte((byte) (isPoop == null ? 0 : isPoop ? 1 : 2));
+        parcel.writeLong(changeTime.getTime());
     }
 }

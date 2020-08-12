@@ -50,7 +50,6 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="28dp"
         android:scaleType="fitXY"
-        android:onClick="OnClickModify"
         android:background="@android:drawable/ic_menu_edit"
         app:layout_constraintLeft_toRightOf="@id/iv_selle"
         app:layout_constraintTop_toTopOf="parent" />

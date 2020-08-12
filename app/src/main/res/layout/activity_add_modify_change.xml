@@ -50,6 +50,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="88dp"
         android:src="@drawable/calendar1"
+        android:background="?attr/selectableItemBackgroundBorderless"
         app:layout_constraintLeft_toRightOf="@id/et_date_add_change"
         app:layout_constraintTop_toBottomOf="@id/et_title_add_change" />
 
@@ -81,6 +82,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="84dp"
         android:src="@drawable/clock1"
+        android:background="?attr/selectableItemBackgroundBorderless"
         app:layout_constraintLeft_toRightOf="@id/et_time_add_change"
         app:layout_constraintTop_toBottomOf="@id/et_date_add_change" />
 
@@ -116,6 +118,7 @@
         android:onClick="onClickSave"
         android:src="@drawable/save1"
         android:text="Sauvegarder"
+        android:background="?attr/selectableItemBackgroundBorderless"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_selle_add_change" />
 
