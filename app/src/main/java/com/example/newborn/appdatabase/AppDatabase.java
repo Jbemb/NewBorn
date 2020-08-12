@@ -49,7 +49,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getInstance(Context context){
         if(INSTANCE == null){
             //creation - context (who access it) - this class info - database name
-            INSTANCE = Room.databaseBuilder(context, AppDatabase.class, "izzy_baby8.db")
+            INSTANCE = Room.databaseBuilder(context, AppDatabase.class, "izzy_baby9.db")
                     .addCallback(roomFixture)
                     .fallbackToDestructiveMigration()
                     .build();
@@ -64,71 +64,7 @@ public abstract class AppDatabase extends RoomDatabase {
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
             super.onCreate(db);
-//            new AsyncTask<AppDatabase,Void,Void>(){
-//                @Override
-//                protected Void doInBackground(AppDatabase... appDatabases) {
-//                    // TODO: change from LocalDateTime to Date. Check program integrity
-//                    //basic variables
-//                    boolean random = true;
-//                    String name = "Zacharien";
-//                    Date date = new Date();
-//                    Calendar c = Calendar.getInstance();
-//                    Random rand = new Random();
-//                    Date ranDate = c.getTime();
-//
-//                    //info change
-//                    ChangeDao changeDao = INSTANCE.getChangeDao();
-//                    int i;
-//                    for(date = new Date(), i=0; i<35; i++, c.add(Calendar.HOUR_OF_DAY, -1*rand.nextInt(36))){
-//                        boolean poopRand = (rand.nextInt(2)==1);
-//                        Change change = new Change(changeName(name), ranDate, poopRand);
-//                        changeDao.insertChange(change);
-//                    }
-//                    //make sure last entry for Zachary is the most recent
-//                    changeDao.insertChange(new Change(name,date,true));
-//
-//                    //info sleep
-//                    SleepDao sleepDao = INSTANCE.getSleepDao();
-//                    for(i=0; i<30; i++){
-//                        Date startDate = ranDate;
-//                        Date endDate;
-//
-//                        c.setTime(startDate);
-//                        c.add(Calendar.MINUTE, rand.nextInt(360));
-//                        endDate = c.getTime();
-//
-//                        Sleep sleep = new Sleep(changeName(name), startDate, endDate);
-//                        sleepDao.insertSleep(sleep);
-//                    }
-//                    //make sure last sleep is recent and Zachary's
-//                    Date d1, d2;
-//                    c.setTime(date);
-//                    c.add(Calendar.HOUR_OF_DAY, -1);
-//                    d1 = c.getTime();
-//                    c.setTime(date);
-//                    c.add(Calendar.MINUTE, -30);
-//                    d2 = c.getTime();
-//                    sleepDao.insertSleep(new Sleep(name, d1, d2));
-//
-//                    //info meal
-//                    MealDao mealDao = INSTANCE.getMealDao();
-//                    for(i=0; i<30; i++){
-//                        //change breast
-            //String breast = "right";
-//                        if(breast.equals("right"){
-//                            breast = false;
-//                        }else if(breast.equals("left"){
-//                            breast = null;
-//                        }else{breast = "right;}
-//                        Meal meal = new Meal(changeName(name), ranDate, 120, breast);
-//                        mealDao.insertMeal(meal);
-//                    }
-//                    //make sure last entry for Zachary is the most recent
-//                    mealDao.insertMeal(new Meal(name,date,120));
-//
-//                    return null;
-//                }
-//            }.execute(INSTANCE);
+
             new AsyncTask<AppDatabase,Void,Void>(){
                 @Override
                 protected Void doInBackground(AppDatabase... appDatabases) {
@@ -204,16 +140,5 @@ public abstract class AppDatabase extends RoomDatabase {
             }.execute(INSTANCE);
         }
     };
-
-    //random baby 1/5
-    private static String changeName(String name){
-        Random rand = new Random();
-        name = "Zachary";
-        int ran = rand.nextInt(5);
-        if(ran == 2){
-            name = "Armel";
-        }
-        return name;
-    }
 
 }

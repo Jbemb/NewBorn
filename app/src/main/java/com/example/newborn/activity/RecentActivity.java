@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.newborn.R;
+import com.example.newborn.activity.lists.ChangeListActivity;
 import com.example.newborn.change.bo.Change;
 import com.example.newborn.change.repository.ChangeDbRepository;
 import com.example.newborn.change.repository.IChangeRepository;
@@ -204,6 +206,18 @@ public class RecentActivity extends AppCompatActivity {
     }
 
     public void onClickAddChange(View view) {
+        Change newChange = new Change();
+        Date date = new Date();
+        CheckBox checkBox = (CheckBox) findViewById(R.id.cb_selle);
+        newChange.setBaby(baby);
+        newChange.setPoop(checkBox.isChecked());
+        newChange.setChangeTime(date);
+        //insert
+        changeRepo.insertChange(newChange);
+        Toast.makeText(this, "Success" + newChange, Toast.LENGTH_LONG).show();
+        checkBox.setChecked(false);
+        Intent intent = new Intent(this, RecentActivity.class);
+        this.startActivity(intent);
     }
 
     public void checkButton(View view) {
@@ -232,6 +246,8 @@ public class RecentActivity extends AppCompatActivity {
             Sleep newSleep = new Sleep(baby, newSleepStart, endDate);
             sleepRepo.insertSleep(newSleep);
             Toast.makeText(this, "Success" + newSleep, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, RecentActivity.class);
+            this.startActivity(intent);
         }
     }
 
