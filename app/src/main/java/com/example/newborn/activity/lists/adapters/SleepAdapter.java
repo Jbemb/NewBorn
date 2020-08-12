@@ -83,7 +83,7 @@ public class SleepAdapter extends ArrayAdapter<Sleep> {
             public void onClick(View view) {
                 Sleep sleep = getItem(position);
                 sleepRepo.deleteSleep(sleep);
-                Toast.makeText(getContext(), "Suprimé", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Supprimé", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getContext(), SleepListActivity.class);
                 getContext().startActivity(intent);
             }

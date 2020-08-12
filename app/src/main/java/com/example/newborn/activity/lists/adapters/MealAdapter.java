@@ -79,7 +79,7 @@ public class MealAdapter extends ArrayAdapter<Meal> {
             public void onClick(View view) {
                 Meal meal = getItem(position);
                 mealRepo.deleteMeal(meal);
-                Toast.makeText(getContext(), "Suprimé", Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Supprimé", Toast.LENGTH_LONG).show();
                 Intent intent = new Intent(getContext(), MealListActivity.class);
                 getContext().startActivity(intent);
             }
