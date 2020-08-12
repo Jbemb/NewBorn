@@ -30,7 +30,6 @@ import java.util.List;
 
 public class ChangeListActivity extends AppCompatActivity {
 
-
     private ChangeViewModel changeVM = null;
     ListView changeList =null;
     List<Change> changes = null;
@@ -100,4 +99,5 @@ public class ChangeListActivity extends AppCompatActivity {
         Intent intent = new Intent(this, SummaryDayActivity.class);
         startActivity(intent);
     }
+
 }
