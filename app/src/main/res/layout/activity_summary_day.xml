@@ -36,7 +36,7 @@
         android:layout_height="105dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="120dp"
-        android:src="@drawable/bottle"
+        android:src="@drawable/bottle1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_day" />
 
@@ -59,7 +59,7 @@
         android:layout_marginLeft="164dp"
         android:layout_marginTop="8dp"
         android:onClick="showTimePickerDialog"
-        android:src="@drawable/calendar"
+        android:src="@drawable/calendar1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_day" />
 
@@ -80,7 +80,7 @@
         android:layout_height="105dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="50dp"
-        android:src="@drawable/diaper"
+        android:src="@drawable/diaper1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_meal_summary" />
 
@@ -113,7 +113,7 @@
         android:layout_height="105dp"
         android:layout_marginLeft="32dp"
         android:layout_marginTop="50dp"
-        android:src="@drawable/bed"
+        android:src="@drawable/bed1"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_change_summary" />
 
