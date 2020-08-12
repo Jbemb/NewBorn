@@ -48,8 +48,9 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="12dp"
         android:gravity="center"
-        android:text="XXXX"
+        android:text="XX:XX"
         android:textSize="30dp"
+        android:textColor="@android:color/holo_green_light"
         app:layout_constraintLeft_toRightOf="@id/iv_recent_meal"
         app:layout_constraintTop_toTopOf="@id/iv_recent_meal" />
 
@@ -62,6 +63,7 @@
         android:text="quantity last meal"
         android:textSize="14dp"
         android:visibility="invisible"
+        tools:visibility="visible"
         app:layout_constraintLeft_toRightOf="@id/tv_meal_time"
         app:layout_constraintTop_toTopOf="@id/iv_recent_meal" />
 
@@ -73,6 +75,7 @@
         android:text="breast"
         android:textSize="14dp"
         android:visibility="invisible"
+        tools:visibility="visible"
         app:layout_constraintLeft_toRightOf="@+id/tv_meal_time"
         app:layout_constraintTop_toBottomOf="@id/tv_recent_meal_quantity" />
 
@@ -84,6 +87,7 @@
         android:layout_marginTop="24dp"
         android:text="quantité ml"
         android:visibility="invisible"
+        tools:visibility="visible"
         app:layout_constraintLeft_toRightOf="@+id/iv_recent_meal"
         app:layout_constraintTop_toBottomOf="@+id/tv_meal_time" />
 
@@ -92,6 +96,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="invisible"
+        tools:visibility="visible"
         app:layout_constraintLeft_toRightOf="@id/iv_recent_meal"
         app:layout_constraintTop_toBottomOf="@id/et_meal_quantity"
         android:orientation="horizontal">
@@ -115,8 +120,6 @@
 
     </RadioGroup>
 
-    <!--change-->
-
     <ImageButton
         android:id="@+id/btn_new_meal"
         android:layout_width="wrap_content"
@@ -128,6 +131,7 @@
         app:layout_constraintLeft_toRightOf="@id/et_meal_quantity"
         app:layout_constraintTop_toTopOf="@id/tv_recent_meal_quantity" />
 
+    <!--change-->
     <ImageView
         android:id="@+id/iv_recent_change"
         android:layout_width="121dp"
@@ -137,8 +141,6 @@
         android:src="@drawable/diaper"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/iv_recent_meal" />
-
-    <!--sleep-->
 
     <TextView
         android:id="@+id/tv_change_time"
@@ -183,7 +185,7 @@
         android:src="@android:drawable/ic_menu_add"
         app:layout_constraintLeft_toRightOf="@id/tv_change_time"
         app:layout_constraintTop_toBottomOf="@+id/tv_selle" />
-
+    <!--sleep-->
     <ImageView
         android:id="@+id/iv_recent_sleep"
         android:layout_width="121dp"
@@ -203,7 +205,7 @@
         android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="XXXX"
-        android:textSize="30dp"
+        android:textSize="14dp"
         app:layout_constraintLeft_toRightOf="@id/iv_recent_sleep"
         app:layout_constraintTop_toTopOf="@id/iv_recent_sleep" />
 
@@ -248,7 +250,7 @@
         android:layout_height="35dp"
         android:layout_marginLeft="88dp"
         android:layout_marginTop="144dp"
-        android:onClick="onClickEndSleep"
+        android:onClick="onClickNewSleep"
         android:src="@drawable/ic_baseline_stop_24"
         app:layout_constraintLeft_toRightOf="@id/tv_sleep_count"
         app:layout_constraintTop_toBottomOf="@+id/btn_new_change" />
