@@ -7,6 +7,10 @@ import com.example.newborn.meal.bo.Meal;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Created and implemented by Amandine
+ * Interface for Meal entity related methods implemented by the MealRepository Class
+ */
 public interface IMealRepository {
 
 

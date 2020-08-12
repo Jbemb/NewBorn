@@ -14,6 +14,10 @@ import com.example.newborn.change.dal.ChangeDao;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Created and implemented by Amandine
+ * Class defining the methods to work with the entity Change from the database
+ */
 public class ChangeDbRepository implements IChangeRepository{
 
     LiveData<List<Change>> observerChangeByBaby = null;

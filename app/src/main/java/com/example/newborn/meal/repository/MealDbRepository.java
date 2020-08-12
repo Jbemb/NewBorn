@@ -10,12 +10,14 @@ import com.example.newborn.appRepository.DoubleParamAsync;
 import com.example.newborn.appdatabase.AppDatabase;
 import com.example.newborn.meal.bo.Meal;
 import com.example.newborn.meal.dal.MealDao;
-import com.example.newborn.sleep.bo.Sleep;
-import com.example.newborn.sleep.dal.SleepDao;
 
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Created and implemented by Amandine
+ * Class defining the methods to work with the entity Meal from the database
+ */
 public class MealDbRepository implements IMealRepository {
     LiveData<List<Meal>> observerMealByBaby = null;
     MutableLiveData<List<Meal>> observerMealByBabyByDate = null;

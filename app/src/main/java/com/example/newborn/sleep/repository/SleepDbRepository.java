@@ -8,14 +8,16 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.example.newborn.appRepository.DoubleParamAsync;
 import com.example.newborn.appdatabase.AppDatabase;
-import com.example.newborn.change.bo.Change;
-import com.example.newborn.change.dal.ChangeDao;
 import com.example.newborn.sleep.bo.Sleep;
 import com.example.newborn.sleep.dal.SleepDao;
 
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Created and implemented by Amandine
+ * Class defining the methods to work with the entity Sleep from the database
+ */
 public class SleepDbRepository implements ISleepRepository {
 
     LiveData<List<Sleep>> observerSleepByBaby = null;

@@ -7,6 +7,10 @@ import com.example.newborn.change.bo.Change;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Created and implemented by Amandine
+ * Interface for Change entity related methods implemented by the ChangeRepository Class
+ */
 public interface IChangeRepository {
 
     LiveData<List<Change>> getObserverChangeByBaby();

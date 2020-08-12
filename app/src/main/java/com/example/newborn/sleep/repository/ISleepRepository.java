@@ -7,6 +7,10 @@ import com.example.newborn.sleep.bo.Sleep;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Created and implemented by Amandine
+ * Interface for Sleep entity related methods implemented by the SleepRepository Class
+ */
 public interface ISleepRepository {
 
     LiveData<List<Sleep>> getObserverSleepByBaby();
