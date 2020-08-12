@@ -16,9 +16,6 @@ import android.widget.Toast;
 
 import com.example.newborn.R;
 import com.example.newborn.activity.SummaryDayActivity;
-import com.example.newborn.change.bo.Change;
-import com.example.newborn.change.view_model.ChangeViewModel;
-import com.example.newborn.meal.bo.Meal;
 import com.example.newborn.sleep.bo.Sleep;
 import com.example.newborn.sleep.view_model.SleepViewModel;
 import com.facebook.stetho.Stetho;
@@ -29,24 +26,32 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * Created and implemented by Amandine
+ * This class allows to add or modify a meal
+ */
 public class AddModifySleepActivity extends AppCompatActivity {
+    //Variables related to the layout
     private EditText etDateStart;
     private EditText etTimeStart;
     private EditText etDateEnd;
     private EditText etTimeEnd;
     private EditText etTitle;
-
-    private Sleep sleepToModify = null;
-    private SleepViewModel svm = null;
-
-    private DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-    private DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+    //Variables needed for the Object Meal
     private Date dateStartToSave;
     private Date dateEndToSave;
     private int hoursStart;
     private int minutesStart;
     private int hoursEnd;
     private int minutesEnd;
+
+    private Sleep sleepToModify = null;
+    private SleepViewModel svm = null;
+
+    //Format to convert dates to strings
+    private DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+    private DateFormat timeFormat = new SimpleDateFormat("HH:mm");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,15 +67,20 @@ public class AddModifySleepActivity extends AppCompatActivity {
         etTitle = findViewById(R.id.et_title_add_sleep);
 
         svm = new ViewModelProvider(this).get(SleepViewModel.class);
+
+        //Get the object Sleep sent from the list of meals by clicking on edit button
         sleepToModify = getIntent().getParcelableExtra("modifySleep");
 
+        //Check if there was an object sent from the list of sleeps
         if (sleepToModify != null) {
+            //Display temporal data of the object Sleep
             Date datetimeStart = sleepToModify.getStartTime();
             etDateStart.setText(dateFormat.format(datetimeStart));
             etTimeStart.setText(timeFormat.format(datetimeStart));
             Date datetimeEnd = sleepToModify.getEndTime();
             etDateEnd.setText(dateFormat.format(datetimeEnd));
             etTimeEnd.setText(timeFormat.format(datetimeEnd));
+
             etTitle.setText("Modification d'un dodo");
         } else {
             etTitle.setText("Ajout d'un dodo");
@@ -114,6 +124,13 @@ public class AddModifySleepActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Function allowing to use a calendar the pick the date the sleep starts
+     * The picked date has the time corresponding to the actual time
+     * To allow the user to set the time one wants, the time of the picked
+     * date is reset by the static function SummaryDayActivity.resetToMidnight
+     * @param ibCalendar
+     */
     private void showDateStartDialog(ImageButton ibCalendar) {
         final Calendar cal = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener(){
@@ -133,6 +150,10 @@ public class AddModifySleepActivity extends AppCompatActivity {
                 cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show();
     }
 
+    /**
+     * Function allowing to use a clock the pick the time the sleep starts
+     * @param ibClock
+     */
     private void showTimeStartDialog(ImageButton ibClock) {
         final Calendar cal = Calendar.getInstance();
         TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener(){
@@ -152,6 +173,14 @@ public class AddModifySleepActivity extends AppCompatActivity {
                 cal.get(Calendar.MINUTE),false).show();
     }
 
+
+    /**
+     * Function allowing to use a calendar the pick the date the sleep ends
+     * The picked date has the time corresponding to the actual time
+     * To allow the user to set the time one wants, the time of the picked
+     * date is reset by the static function SummaryDayActivity.resetToMidnight
+     * @param ibCalendar2
+     */
     private void showDateEndDialog(ImageButton ibCalendar2) {
         final Calendar cal = Calendar.getInstance();
         DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener(){
@@ -171,6 +200,10 @@ public class AddModifySleepActivity extends AppCompatActivity {
                 cal.get(Calendar.MONTH),cal.get(Calendar.DAY_OF_MONTH)).show();
     }
 
+    /**
+     * Function allowing to use a clock the pick the time the sleep ends
+     * @param ibClock2
+     */
     private void showTimeEndDialog(ImageButton ibClock2) {
         final Calendar cal = Calendar.getInstance();
         TimePickerDialog.OnTimeSetListener timeSetListener = new TimePickerDialog.OnTimeSetListener(){
@@ -231,6 +264,7 @@ public class AddModifySleepActivity extends AppCompatActivity {
             //Set the end date and the ebd time to save
             sleepToModify.setEndTime(dateEndToSave);
 
+            //Update the object  in the dbb if it exists or insert it in the dbb if not
             if (sleepToModify.getId() == 0) {
                 //TODO get the baby's name
                 sleepToModify = new Sleep("Zachary", dateStartToSave, dateEndToSave);
