@@ -51,6 +51,9 @@ public class RecentActivity extends AppCompatActivity {
     private boolean isSleeping;
     private Date newSleepStart;
     private long newSleepDuration;
+    //info for meal and radio button
+    private RadioGroup rgBreast;
+    private RadioButton rbBreast;
     //Repos
     private IMealRepository mealRepo;
     private IChangeRepository changeRepo;
@@ -75,7 +78,7 @@ public class RecentActivity extends AppCompatActivity {
         final TextView tvMealQuantity = findViewById(R.id.tv_recent_meal_quantity);
         final TextView tvMealBoob = findViewById(R.id.tv_recent_boob);
         final EditText etQuantity = findViewById(R.id.et_meal_quantity);
-        final RadioGroup rgBreast = findViewById(R.id.rg_breast);
+        rgBreast = findViewById(R.id.rg_breast);
         final RadioButton rbLeft = findViewById(R.id.rb_left);
         final RadioButton rbright = findViewById(R.id.rb_right);
         //final ImageButton btnStartMeal = findViewById(R.id.btn_new_change);
@@ -202,7 +205,27 @@ public class RecentActivity extends AppCompatActivity {
     }
 
     public void onClickAddMeal(View view) {
-
+        Date now = new Date();
+        Meal newMeal = new Meal(baby, now);
+        //check for breast
+        int radioId = rgBreast.getCheckedRadioButtonId();
+        if(radioId != -1){
+            rbBreast = findViewById(radioId);
+            String breast = (String) rbBreast.getText();
+            if(breast.equals("Gauche")){
+                breast = "left";
+            }else{
+                breast = "right";
+            }
+            newMeal.setBreast(breast);
+        }
+        EditText etQuantity = findViewById(R.id.et_meal_quantity);
+        int quantity = Integer.valueOf(etQuantity.getText().toString());
+        newMeal.setQuantity(quantity);
+        mealRepo.insertMeal(newMeal);
+        Toast.makeText(this, "ajouté", Toast.LENGTH_LONG).show();
+        Intent intent = new Intent(this, RecentActivity.class);
+        this.startActivity(intent);
     }
 
     public void onClickAddChange(View view) {
@@ -214,13 +237,10 @@ public class RecentActivity extends AppCompatActivity {
         newChange.setChangeTime(date);
         //insert
         changeRepo.insertChange(newChange);
-        Toast.makeText(this, "Success" + newChange, Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "ajouté", Toast.LENGTH_LONG).show();
         checkBox.setChecked(false);
         Intent intent = new Intent(this, RecentActivity.class);
         this.startActivity(intent);
-    }
-
-    public void checkButton(View view) {
     }
 
     public void startSleepTimer(View view) {
