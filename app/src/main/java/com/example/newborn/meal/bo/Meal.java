@@ -75,6 +75,7 @@ public class Meal implements Parcelable {
         baby = in.readString();
         quantity = in.readInt();
         breast = in.readString();
+        time = new Date(in.readLong());
     }
 
     public static final Creator<Meal> CREATOR = new Creator<Meal>() {
@@ -153,5 +154,6 @@ public class Meal implements Parcelable {
         parcel.writeString(baby);
         parcel.writeInt(quantity);
         parcel.writeString(breast);
+        parcel.writeLong(time.getTime());
     }
 }
