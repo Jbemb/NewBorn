@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.change.ChangeListActivity">
+
+    <TextView
+        android:id="@+id/title_list_change"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Historique des changes"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        android:text="Date: "
+        app:layout_constraintTop_toBottomOf="@id/title_list_change"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Heure: "
+        android:layout_marginLeft="50dp"
+        app:layout_constraintTop_toBottomOf="@id/title_list_change"
+        app:layout_constraintLeft_toRightOf="@id/tv_date"
+        />
+    <TextView
+        android:id="@+id/tv_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="20dp"
+        android:text="Selles: "
+        app:layout_constraintTop_toBottomOf="@id/title_list_change"
+        app:layout_constraintLeft_toRightOf="@id/tv_time"/>
+
+    <ListView
+        android:id="@+id/lv_changeList"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="80dp"
+        android:layout_marginBottom="150dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_list_change"
+        app:layout_constraintTop_toTopOf="parent">
+    </ListView>
+
+    <ImageButton
+        android:id="@+id/ib_add"
+        android:layout_width="69dp"
+        android:layout_height="66dp"
+        android:layout_marginLeft="204dp"
+        android:layout_marginTop="20dp"
+        android:onClick="OnClickAdd"
+        android:src="@drawable/add1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintTop_toBottomOf="@id/lv_changeList" />
+
+    <ImageButton
+        android:id="@+id/ib_back"
+        android:layout_width="103dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="20dp"
+        android:onClick="OnClickBack"
+        android:src="@drawable/back1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintRight_toLeftOf="@+id/ib_add"
+        app:layout_constraintTop_toBottomOf="@id/lv_changeList" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

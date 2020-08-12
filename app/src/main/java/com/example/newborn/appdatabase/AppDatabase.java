@@ -10,20 +10,18 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import com.example.newborn.change.bo.Change;
-import com.example.newborn.change.dal.ChangeDao;
-import com.example.newborn.meal.bo.Meal;
-import com.example.newborn.meal.dal.MealDao;
-import com.example.newborn.sleep.bo.Sleep;
-import com.example.newborn.sleep.dal.SleepDao;
+import com.example.newborn.model.change.Change;
+import com.example.newborn.dal.change.ChangeDao;
+import com.example.newborn.model.meal.Meal;
+import com.example.newborn.dal.meal.MealDao;
+import com.example.newborn.model.sleep.Sleep;
+import com.example.newborn.dal.sleep.SleepDao;
 
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import javax.xml.namespace.QName;
 
 enum TestEventName {
     CHANGE,

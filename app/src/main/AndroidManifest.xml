@@ -9,16 +9,16 @@ package="com.example.newborn">
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <activity android:name=".activity.AddModify.AddModifyMealActivity"></activity>
-    <activity android:name=".activity.lists.MealListActivity" />
-    <activity android:name=".activity.RecentActivity" />
-    <activity android:name=".activity.AddModify.AddModifyChangeActivity" />
-    <activity android:name=".activity.AddModify.AddModifySleepActivity" />
-    <activity android:name=".activity.lists.SleepListActivity" />
-    <activity android:name=".activity.lists.ChangeListActivity" />
-    <activity android:name=".activity.SummaryDayActivity" />
+    <activity android:name=".activity.meal.AddModifyMealActivity"></activity>
+    <activity android:name=".activity.meal.MealListActivity" />
+    <activity android:name=".activity.global.RecentActivity" />
+    <activity android:name=".activity.change.AddModifyChangeActivity" />
+    <activity android:name=".activity.sleep.AddModifySleepActivity" />
+    <activity android:name=".activity.sleep.SleepListActivity" />
+    <activity android:name=".activity.change.ChangeListActivity" />
+    <activity android:name=".activity.global.SummaryDayActivity" />
 
-    <activity android:name=".activity.MainActivity">
+    <activity android:name=".activity.global.MainActivity">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
