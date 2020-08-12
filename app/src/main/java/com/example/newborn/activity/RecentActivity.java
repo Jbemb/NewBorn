@@ -39,6 +39,7 @@ public class RecentActivity extends AppCompatActivity {
     //timer sleep
     private Chronometer sleepChrono;
     private boolean isSleeping;
+    private Date newSleepStart;
     private long newSleepDuration;
 
     @Override
@@ -74,11 +75,12 @@ public class RecentActivity extends AppCompatActivity {
                 long timeSinceMilliseconds =  now.getTime() - dateTimeMeal.getTime();
                 long timeSince = timeSinceMilliseconds/1000/60;
                 if (timeSince < 60) {
-                    tvMealTime.setText("00 : " + timeSince);
+
+                    tvMealTime.setText(timeSince +"min");
                 } else {
                     long hours = timeSince/60;
                     long minutes = timeSince%60;
-                    tvMealTime.setText(hours + " : " + minutes);
+                    tvMealTime.setText( hours + "h " + minutes);
                 }
 
                 if(meal.getQuantity()!=0){
@@ -129,11 +131,11 @@ public class RecentActivity extends AppCompatActivity {
                 long timeSinceMilliseconds =  now.getTime() - dateTimeChange.getTime();
                 long timeSince = timeSinceMilliseconds/1000/60;
                 if (timeSince < 60) {
-                    tvChangeTime.setText("Dernier change: 00 : " + timeSince);
+                    tvChangeTime.setText(timeSince +"min");
                 } else {
                     long hours = timeSince/60;
                     long minutes = timeSince%60;
-                    tvChangeTime.setText("Dernier change: "+ hours + " : " + minutes);
+                    tvChangeTime.setText(hours + "h " + minutes);
                 }
                 //set selle
                 String selle = "non";
@@ -161,11 +163,11 @@ public class RecentActivity extends AppCompatActivity {
                 long timeSinceMilliseconds =  now.getTime() - dateTimeSleepEnd.getTime();
                 long timeSince = timeSinceMilliseconds/1000/60;
                 if (timeSince < 60) {
-                    tvSleepTime.setText("Dernier dodo: 00 : " + timeSince);
+                    tvSleepTime.setText(timeSince +"min");
                 } else {
                     long hours = timeSince/60;
                     long minutes = timeSince%60;
-                    tvSleepTime.setText("Dernier dodo: "+ hours + " : " + minutes);
+                    tvSleepTime.setText(hours + "h " + minutes);
                 }
                 //Calculation of the duration of sleep
                 Date dateTimeSleepStart = sleep.getStartTime();
@@ -197,6 +199,7 @@ public class RecentActivity extends AppCompatActivity {
             sleepChrono.setBase(SystemClock.elapsedRealtime());
             sleepChrono.start();
             isSleeping = true;
+            newSleepStart= new Date();
         }
     }
 
@@ -208,6 +211,7 @@ public class RecentActivity extends AppCompatActivity {
             //reset chrono to 0
             sleepChrono.setBase(SystemClock.elapsedRealtime());
             Toast.makeText(this, "time" + newSleepDuration, Toast.LENGTH_LONG).show();
+            //store sleep
         }
     }
 
