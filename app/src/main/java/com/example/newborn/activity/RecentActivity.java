@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Chronometer;
 import android.widget.EditText;
@@ -18,17 +21,22 @@ import android.widget.Toast;
 
 import com.example.newborn.R;
 import com.example.newborn.change.bo.Change;
+import com.example.newborn.change.repository.ChangeDbRepository;
+import com.example.newborn.change.repository.IChangeRepository;
 import com.example.newborn.change.view_model.ChangeViewModel;
 import com.example.newborn.meal.bo.Meal;
+import com.example.newborn.meal.repository.IMealRepository;
+import com.example.newborn.meal.repository.MealDbRepository;
 import com.example.newborn.meal.view_model.MealViewModel;
 import com.example.newborn.sleep.bo.Sleep;
+import com.example.newborn.sleep.repository.ISleepRepository;
+import com.example.newborn.sleep.repository.SleepDbRepository;
 import com.example.newborn.sleep.view_model.SleepViewModel;
 import com.facebook.stetho.Stetho;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 
 public class RecentActivity extends AppCompatActivity {
@@ -41,19 +49,25 @@ public class RecentActivity extends AppCompatActivity {
     private boolean isSleeping;
     private Date newSleepStart;
     private long newSleepDuration;
+    //Repos
+    private IMealRepository mealRepo;
+    private IChangeRepository changeRepo;
+    private ISleepRepository sleepRepo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recent);
         Stetho.initializeWithDefaults(this);
-
+        //initialize Repos
+        mealRepo = new MealDbRepository(this);
+        changeRepo = new ChangeDbRepository(this);
+        sleepRepo = new SleepDbRepository(this);
         //set day
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         Date date = new Date();
         final TextView tvToday = findViewById(R.id.tv_today);
         tvToday.setText(dateFormat.format(date));
-
         //Meal
         final TextView tvMealTime = findViewById(R.id.tv_meal_time);
         final TextView tvMealQuantity = findViewById(R.id.tv_recent_meal_quantity);
@@ -186,6 +200,7 @@ public class RecentActivity extends AppCompatActivity {
     }
 
     public void onClickAddMeal(View view) {
+
     }
 
     public void onClickAddChange(View view) {
@@ -210,8 +225,44 @@ public class RecentActivity extends AppCompatActivity {
             isSleeping = false;
             //reset chrono to 0
             sleepChrono.setBase(SystemClock.elapsedRealtime());
-            Toast.makeText(this, "time" + newSleepDuration, Toast.LENGTH_LONG).show();
             //store sleep
+            //calculate the sleep end time
+            long endTimeMilliseconds = newSleepStart.getTime() + newSleepDuration;
+            Date endDate = new Date(endTimeMilliseconds);
+            Sleep newSleep = new Sleep(baby, newSleepStart, endDate);
+            sleepRepo.insertSleep(newSleep);
+            Toast.makeText(this, "Success" + newSleep, Toast.LENGTH_LONG).show();
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+    //TODO links of the menu
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_accueil:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_activites_recentes:
+                intent = new Intent(this, RecentActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_bilan:
+                intent = new Intent(this, SummaryDayActivity.class);
+                startActivity(intent);
+                return true;
+//            case R.id.action_parametres:
+//                intent = new Intent(this, ParameterActivity.class);
+//                startActivity(intent);
+//                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
