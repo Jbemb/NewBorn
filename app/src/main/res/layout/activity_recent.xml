@@ -149,8 +149,9 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="64dp"
         android:gravity="center"
-        android:text="XXXX"
-        android:textSize="30dp"
+        android:text="XX:XX"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="18dp"
         app:layout_constraintLeft_toRightOf="@id/iv_recent_change"
         app:layout_constraintTop_toBottomOf="@id/rg_breast" />
 
@@ -169,8 +170,8 @@
         android:id="@+id/cb_selle"
         android:layout_width="79dp"
         android:layout_height="30dp"
-        android:layout_marginLeft="88dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="28dp"
         android:text="selle"
         app:layout_constraintLeft_toRightOf="@+id/iv_recent_change"
         app:layout_constraintTop_toBottomOf="@id/tv_change_time" />
@@ -204,7 +205,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="XXXX"
+        android:text="XX:XX"
         android:textSize="14dp"
         app:layout_constraintLeft_toRightOf="@id/iv_recent_sleep"
         app:layout_constraintTop_toTopOf="@id/iv_recent_sleep" />
@@ -221,38 +222,38 @@
         app:layout_constraintLeft_toRightOf="@id/tv_sleep_time"
         app:layout_constraintTop_toTopOf="@id/iv_recent_sleep" />
 
-    <TextView
-        android:id="@+id/tv_sleep_count"
+    <Chronometer
+        android:id="@+id/chrono_sleep_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
         android:layout_marginTop="16dp"
-        android:text="zzzz"
+        android:text="zz:zz"
+        android:textColor="@android:color/holo_blue_light"
         android:textSize="30dp"
         app:layout_constraintLeft_toRightOf="@+id/iv_recent_sleep"
         app:layout_constraintTop_toBottomOf="@+id/tv_sleep_time" />
 
     <ImageButton
-        android:id="@+id/btn_new_sleep"
+        android:id="@+id/btn_start_sleep"
         android:layout_width="33dp"
         android:layout_height="29dp"
-        android:layout_marginLeft="44dp"
-        android:layout_marginTop="20dp"
-        android:onClick="onClickStartSleep"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="32dp"
+        android:onClick="startSleepTimer"
         android:src="@drawable/ic_play_button"
-
-        app:layout_constraintLeft_toRightOf="@id/tv_sleep_count"
+        app:layout_constraintLeft_toRightOf="@id/iv_recent_sleep"
         app:layout_constraintTop_toBottomOf="@+id/tv_sleep_time" />
 
     <ImageButton
         android:id="@+id/btn_stop_sleep"
         android:layout_width="43dp"
         android:layout_height="35dp"
-        android:layout_marginLeft="88dp"
+        android:layout_marginLeft="184dp"
         android:layout_marginTop="144dp"
-        android:onClick="onClickNewSleep"
+        android:onClick="stopSleepTimer"
         android:src="@drawable/ic_baseline_stop_24"
-        app:layout_constraintLeft_toRightOf="@id/tv_sleep_count"
+        app:layout_constraintLeft_toRightOf="@id/iv_recent_sleep"
         app:layout_constraintTop_toBottomOf="@+id/btn_new_change" />
 
 
