@@ -11,6 +11,7 @@ package="com.example.newborn">
     android:theme="@style/AppTheme">
     <activity android:name=".activity.AddModify.AddModifyMealActivity"></activity>
     <activity android:name=".activity.lists.MealListActivity" />
+    <activity android:name=".activity.RecentActivity" />
     <activity android:name=".activity.AddModify.AddModifyChangeActivity" />
     <activity android:name=".activity.lists.SleepListActivity" />
     <activity android:name=".activity.lists.ChangeListActivity" />
