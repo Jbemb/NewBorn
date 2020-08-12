@@ -14,9 +14,11 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.newborn.R;
 import com.example.newborn.activity.SummaryDayActivity;
+import com.example.newborn.activity.lists.ChangeListActivity;
 import com.example.newborn.activity.lists.adapters.ChangeAdapter;
 import com.example.newborn.change.bo.Change;
 import com.example.newborn.change.view_model.ChangeViewModel;
@@ -33,6 +35,7 @@ public class AddModifyChangeActivity extends AppCompatActivity {
     private EditText etDate;
     private EditText etTime;
     private CheckBox cbSelle;
+    private EditText etTitle;
 
     private Change changeToModify = null;
     private ChangeViewModel cvm = null;
@@ -52,6 +55,7 @@ public class AddModifyChangeActivity extends AppCompatActivity {
        etDate = findViewById(R.id.et_date_add_change);
        etTime = findViewById(R.id.et_time_add_change);
        cbSelle = findViewById(R.id.cb_selle_add_change);
+       etTitle = findViewById(R.id.et_title_add_change);
 
         cvm = new ViewModelProvider(this).get(ChangeViewModel.class);
         changeToModify = getIntent().getParcelableExtra("modifyChange");
@@ -61,7 +65,9 @@ public class AddModifyChangeActivity extends AppCompatActivity {
             etDate.setText(dateFormat.format(datetimeChange));
             etTime.setText(timeFormat.format(datetimeChange));
             cbSelle.setChecked(changeToModify.getPoop());
+            etTitle.setText("Modification d'un change");
         } else {
+            etTitle.setText("Ajout d'un change");
             changeToModify = new Change();
         }
 
@@ -165,7 +171,9 @@ public class AddModifyChangeActivity extends AppCompatActivity {
             } else {
                 cvm.updateChange(changeToModify);
             }
-            finish();
+            Toast.makeText(this, "Sauvegardé", Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(this, SummaryDayActivity.class);
+            startActivity(intent);
 
         } catch (ParseException e) {
             e.printStackTrace();

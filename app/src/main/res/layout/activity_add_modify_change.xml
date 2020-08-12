@@ -8,7 +8,7 @@
     tools:context=".activity.AddModify.AddModifyChangeActivity"
     android:padding="10dp">
 
-    <EditView
+    <EditText
         android:id="@+id/et_title_add_change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

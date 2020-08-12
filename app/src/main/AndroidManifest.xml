@@ -13,6 +13,7 @@ package="com.example.newborn">
     <activity android:name=".activity.lists.MealListActivity" />
     <activity android:name=".activity.RecentActivity" />
     <activity android:name=".activity.AddModify.AddModifyChangeActivity" />
+    <activity android:name=".activity.AddModify.AddModifySleepActivity" />
     <activity android:name=".activity.lists.SleepListActivity" />
     <activity android:name=".activity.lists.ChangeListActivity" />
     <activity android:name=".activity.SummaryDayActivity" />
