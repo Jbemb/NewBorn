@@ -5,17 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.change.ChangeListActivity">
+    tools:context=".activity.change.ChangeListActivity"
+    android:paddingBottom="5dp">
 
-    <TextView
-        android:id="@+id/tv_baby"
-        android:text="baby"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/tv_dateItem"
@@ -26,7 +18,7 @@
         android:layout_marginTop="20dp"
         android:text="DATE"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_baby" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_timeItem"
@@ -47,20 +39,19 @@
         android:layout_marginLeft="40dp"
         android:layout_marginTop="20dp"
         android:scaleType="fitXY"
-        android:src="@android:drawable/btn_star_big_on"
+        android:src="@drawable/checkpoop"
         android:visibility="invisible"
         app:layout_constraintLeft_toRightOf="@id/tv_timeItem"
         app:layout_constraintTop_toTopOf="parent" />
-    <!--TODO choose icon for poop-->
 
     <ImageButton
         android:id="@+id/ib_modifyChange"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="104dp"
         android:layout_marginTop="28dp"
+        android:background="@drawable/edit"
         android:scaleType="fitXY"
-        android:background="@android:drawable/ic_menu_edit"
         app:layout_constraintLeft_toRightOf="@id/iv_selle"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -71,7 +62,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="28dp"
         android:scaleType="fitXY"
-        android:background="@android:drawable/ic_menu_delete"
+        android:background="@drawable/delete"
         app:layout_constraintLeft_toRightOf="@id/ib_modifyChange"
         app:layout_constraintTop_toTopOf="parent" />
 

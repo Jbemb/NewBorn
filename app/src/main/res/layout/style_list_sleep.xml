@@ -7,15 +7,6 @@
     android:layout_height="match_parent"
     tools:context=".activity.sleep.SleepListActivity">
 
-    <TextView
-        android:id="@+id/tv_baby"
-        android:text="baby"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
         android:id="@+id/tv_dateItem"
@@ -26,7 +17,7 @@
         android:layout_marginTop="20dp"
         android:text="DATE"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_baby" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_timeItem"
@@ -44,8 +35,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="30dp"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginTop="28dp"
         android:text="DUREE"
         app:layout_constraintLeft_toRightOf="@id/tv_timeItem"
         app:layout_constraintTop_toTopOf="parent" />
@@ -54,10 +45,10 @@
         android:id="@+id/ib_modify"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginLeft="16dp"
+        android:layout_marginLeft="92dp"
         android:layout_marginTop="28dp"
+        android:background="@drawable/edit"
         android:scaleType="fitXY"
-        android:background="@android:drawable/ic_menu_edit"
         app:layout_constraintLeft_toRightOf="@id/tv_durationItem"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,7 +59,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="28dp"
         android:scaleType="fitXY"
-        android:background="@android:drawable/ic_menu_delete"
+        android:background="@drawable/delete"
         app:layout_constraintLeft_toRightOf="@id/ib_modify"
         app:layout_constraintTop_toTopOf="parent" />
 
