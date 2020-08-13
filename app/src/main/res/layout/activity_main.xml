@@ -7,12 +7,48 @@
     tools:context=".activity.global.MainActivity">
 
     <TextView
+        android:id="@+id/tv_Welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="50dp"
+        android:text="Bienvenue"
+        android:textSize="35dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_selectChild"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Sélectionner ton bébé"
+        android:textSize="25dp"
+        android:visibility="invisible"
+        tools:visibility="visible"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_Welcome" />
+    <ListView
+        android:id="@+id/lv_babies"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="110dp"
+        android:layout_marginBottom="150dp"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_selectChild">
+    </ListView>
+
+    <ImageButton
+        android:id="@+id/btn_new_child"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="460dp"
+        android:onClick="onClickAddChild"
+        android:src="@drawable/add1"
+        app:layout_constraintLeft_toRightOf="parent"
+        app:layout_constraintRight_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_selectChild" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

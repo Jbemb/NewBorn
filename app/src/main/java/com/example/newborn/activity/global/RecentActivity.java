@@ -5,6 +5,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.view.Menu;
@@ -49,6 +50,7 @@ public class RecentActivity extends AppCompatActivity {
     private boolean isSleeping;
     private Date newSleepStart;
     private long newSleepDuration;
+    SharedPreferences preferences;
     //info for meal and radio button
     private RadioGroup rgBreast;
     private RadioButton rbBreast;
@@ -56,6 +58,7 @@ public class RecentActivity extends AppCompatActivity {
     private IMealRepository mealRepo;
     private IChangeRepository changeRepo;
     private ISleepRepository sleepRepo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,6 +83,8 @@ public class RecentActivity extends AppCompatActivity {
         final RadioButton rbLeft = findViewById(R.id.rb_left);
         final RadioButton rbright = findViewById(R.id.rb_right);
         //final ImageButton btnStartMeal = findViewById(R.id.btn_new_change);
+
+        preferences = getSharedPreferences("chrono", MODE_PRIVATE);
 
         MealViewModel mvm = new ViewModelProvider(this).get(MealViewModel.class);
         mvm.getLastMealByBaby(baby);
@@ -202,6 +207,38 @@ public class RecentActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        //time since
+        //get starttime turn to milliseconds
+        long startMillis = sleepChrono.getBase();
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putLong("startTime", startMillis);
+        editor.putBoolean("sleeping", isSleeping);
+        editor.apply();
+        Toast.makeText(this, "sleep" + startMillis, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        isSleeping = preferences.getBoolean("sleeping", false);
+        Toast.makeText(this, "sleep" + isSleeping, Toast.LENGTH_LONG).show();
+        if (isSleeping) {
+            long startMillis = preferences.getLong("startTime", System.currentTimeMillis());
+            //reset newSleepStart
+            Date date = new Date(startMillis);
+            newSleepStart = date;
+            //calculate
+            //now - start = temps ecoulé
+            //reset - start timer
+           // sleepChrono.setBase(SystemClock.elapsedRealtime() - (time.elapse));
+            sleepChrono.start();
+        }
+    }
+
     public void onClickAddMeal(View view) {
         Date now = new Date();
         Meal newMeal = new Meal(baby, now);
@@ -264,6 +301,8 @@ public class RecentActivity extends AppCompatActivity {
             Sleep newSleep = new Sleep(baby, newSleepStart, endDate);
             sleepRepo.insertSleep(newSleep);
             Toast.makeText(this, "Success" + newSleep, Toast.LENGTH_LONG).show();
+            preferences.edit().putBoolean("sleeping",false)
+                    .putString("startTime","0").apply();
             Intent intent = new Intent(this, RecentActivity.class);
             this.startActivity(intent);
         }

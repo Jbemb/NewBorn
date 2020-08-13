@@ -3,12 +3,17 @@ package com.example.newborn.activity.global;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.newborn.R;
 import com.facebook.stetho.Stetho;
+
+import java.util.HashSet;
+import java.util.Set;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,6 +22,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Stetho.initializeWithDefaults(this);
+
+        //create list for baby - normally this will be done in the add/modify/delete baby activity
+//create the fichier with baby names until the add baby page is done
+
+        Set<String> babyStorage = new HashSet<String>();
+        babyStorage.add("Armel");
+        babyStorage.add("Zachary");
+        SharedPreferences sp = getSharedPreferences("Babies", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sp.edit();
+
+        //editor.putStringSet("babyList", "babyStorage");
+        editor.commit();
+
+
+//get names from fichier
+       // SharedPreferences sp = getSharedPreferences("Babies", MODE_PRIVATE);
+        Set<String> babyNames = sp.getStringSet("babyList", null);
     }
 
     @Override
@@ -48,5 +70,8 @@ public class MainActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
        }
+    }
+
+    public void onClickAddChild(View view) {
     }
 }
