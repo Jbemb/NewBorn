@@ -12,6 +12,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -37,7 +38,7 @@ public class AddModifyMealActivity extends AppCompatActivity {
     private EditText etQuantity;
     private RadioButton rbLeftBreast;
     private RadioButton rbRightBreast;
-    private EditText etTitle;
+    private TextView tvTitle;
     //Variables needed for the Object Meal
     private String breast;
     private int quantity;
@@ -65,7 +66,7 @@ public class AddModifyMealActivity extends AppCompatActivity {
         etQuantity = findViewById(R.id.et_quantity_add_meal);
         rbLeftBreast = findViewById(R.id.rb_left);
         rbRightBreast = findViewById(R.id.rb_right);
-        etTitle = findViewById(R.id.et_title_add_meal);
+        tvTitle = findViewById(R.id.et_title_add_meal);
 
         mvm = new ViewModelProvider(this).get(MealViewModel.class);
 
@@ -79,7 +80,7 @@ public class AddModifyMealActivity extends AppCompatActivity {
             etDate.setText(dateFormat.format(datetimeMeal));
             etTime.setText(timeFormat.format(datetimeMeal));
             etQuantity.setText(""+mealToModify.getQuantity());
-            etTitle.setText("Modification d'un repas");
+            tvTitle.setText("Modification d'un repas");
             //Display breastfeeding data of the object Meal
             breast = mealToModify.getBreast();
             boolean isLeftBreast = false;
@@ -93,7 +94,7 @@ public class AddModifyMealActivity extends AppCompatActivity {
             rbRightBreast.setChecked(isRightBreast);
 
         } else {
-            etTitle.setText("Ajout d'un repas");
+            tvTitle.setText("Ajout d'un repas");
             mealToModify = new Meal();
         }
 

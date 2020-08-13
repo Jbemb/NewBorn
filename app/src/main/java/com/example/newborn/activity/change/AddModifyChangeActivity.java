@@ -12,6 +12,7 @@ import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -36,7 +37,7 @@ public class AddModifyChangeActivity extends AppCompatActivity {
     private EditText etDate;
     private EditText etTime;
     private CheckBox cbSelle;
-    private EditText etTitle;
+    private TextView tvTitle;
     //Variables needed for the Object Change
     private Date dateToSave;
     private int hours;
@@ -59,7 +60,7 @@ public class AddModifyChangeActivity extends AppCompatActivity {
         etDate = findViewById(R.id.et_date_add_change);
         etTime = findViewById(R.id.et_time_add_change);
         cbSelle = findViewById(R.id.cb_selle_add_change);
-        etTitle = findViewById(R.id.et_title_add_change);
+        tvTitle = findViewById(R.id.et_title_add_change);
 
         cvm = new ViewModelProvider(this).get(ChangeViewModel.class);
 
@@ -75,9 +76,9 @@ public class AddModifyChangeActivity extends AppCompatActivity {
             //Display if the change include selle or not
             cbSelle.setChecked(changeToModify.getPoop());
 
-            etTitle.setText("Modification d'un change");
+            tvTitle.setText("Modification d'un change");
         } else {
-            etTitle.setText("Ajout d'un change");
+            tvTitle.setText("Ajout d'un change");
             changeToModify = new Change();
         }
 
@@ -143,11 +144,6 @@ public class AddModifyChangeActivity extends AppCompatActivity {
 
                 etTime.setText(timeFormat.format(cal.getTime()));
 
-//                Intent intentSummary = new Intent(SummaryDayActivity.this, SummaryDayActivity.class);
-//                intentSummary.putExtra("dayStart", dayStart);
-//                intentSummary.putExtra("dayEnd", dayEnd);
-//
-//                startActivity(intentSummary);
             }
 
 

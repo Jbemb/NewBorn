@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -36,7 +37,7 @@ public class AddModifySleepActivity extends AppCompatActivity {
     private EditText etTimeStart;
     private EditText etDateEnd;
     private EditText etTimeEnd;
-    private EditText etTitle;
+    private TextView tvTitle;
     //Variables needed for the Object Meal
     private Date dateStartToSave;
     private Date dateEndToSave;
@@ -64,7 +65,7 @@ public class AddModifySleepActivity extends AppCompatActivity {
         etTimeStart = findViewById(R.id.et_time_add_sleep);
         etDateEnd = findViewById(R.id.et_dateend_add_sleep);
         etTimeEnd = findViewById(R.id.et_timeend_add_sleep);
-        etTitle = findViewById(R.id.et_title_add_sleep);
+        tvTitle = findViewById(R.id.et_title_add_sleep);
 
         svm = new ViewModelProvider(this).get(SleepViewModel.class);
 
@@ -81,9 +82,9 @@ public class AddModifySleepActivity extends AppCompatActivity {
             etDateEnd.setText(dateFormat.format(datetimeEnd));
             etTimeEnd.setText(timeFormat.format(datetimeEnd));
 
-            etTitle.setText("Modification d'un dodo");
+            tvTitle.setText("Modification d'un dodo");
         } else {
-            etTitle.setText("Ajout d'un dodo");
+            tvTitle.setText("Ajout d'un dodo");
             sleepToModify = new Sleep();
         }
 
