@@ -1,4 +1,4 @@
-package com.example.newborn.change.repository;
+package com.example.newborn.repository.change;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -6,9 +6,9 @@ import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.newborn.appRepository.DoubleParamAsync;
+import com.example.newborn.repository.DoubleParamAsync;
 import com.example.newborn.appdatabase.AppDatabase;
-import com.example.newborn.change.bo.Change;
+import com.example.newborn.model.change.Change;
 import com.example.newborn.dal.change.ChangeDao;
 
 import java.util.Date;

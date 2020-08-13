@@ -1,8 +1,8 @@
-package com.example.newborn.change.repository;
+package com.example.newborn.repository.change;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.newborn.change.bo.Change;
+import com.example.newborn.model.change.Change;
 
 import java.util.Date;
 import java.util.List;
