@@ -56,6 +56,10 @@ public class AddModifyChangeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_modify_change);
         Stetho.initializeWithDefaults(this);
 
+        //set babyName
+        final TextView tvBabyName = findViewById(R.id.tv_baby);
+        tvBabyName.setText("Zachary");
+
         //Initiate the layout variables
         etDate = findViewById(R.id.et_date_add_change);
         etTime = findViewById(R.id.et_time_add_change);

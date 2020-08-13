@@ -61,6 +61,10 @@ public class AddModifySleepActivity extends AppCompatActivity {
 
         Stetho.initializeWithDefaults(this);
 
+        //set babyName
+        final TextView tvBabyName = findViewById(R.id.tv_baby);
+        tvBabyName.setText("Zachary");
+
         etDateStart = findViewById(R.id.et_date_add_sleep);
         etTimeStart = findViewById(R.id.et_time_add_sleep);
         etDateEnd = findViewById(R.id.et_dateend_add_sleep);

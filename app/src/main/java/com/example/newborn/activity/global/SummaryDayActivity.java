@@ -48,6 +48,10 @@ public class SummaryDayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_summary_day);
         Stetho.initializeWithDefaults(this);
 
+        //set child name
+        final TextView tvBabyName = findViewById(R.id.tv_baby);
+        tvBabyName.setText("Zachary");
+
         //Initiate the layout variables
         final TextView tvDay = findViewById(R.id.tv_day);
         final TextView tvMealSummary = findViewById(R.id.tv_meal_summary);

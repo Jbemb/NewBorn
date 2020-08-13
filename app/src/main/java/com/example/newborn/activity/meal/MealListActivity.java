@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.newborn.R;
 import com.example.newborn.activity.global.MainActivity;
@@ -39,6 +40,10 @@ public class MealListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_meal);
         Stetho.initializeWithDefaults(this);
+
+        //set babyName
+        final TextView tvBabyName = findViewById(R.id.tv_baby);
+        tvBabyName.setText("Zachary");
 
         mealList = findViewById(R.id.lv_meallist);
 

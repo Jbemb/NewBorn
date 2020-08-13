@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.newborn.R;
 import com.example.newborn.activity.global.MainActivity;
@@ -36,8 +37,12 @@ public class ChangeListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_list_change);
+
+        //set babyName
+        final TextView tvBabyName = findViewById(R.id.tv_baby);
+        tvBabyName.setText("Zachary");
+
         changeList = findViewById(R.id.lv_changeList);
 
         Intent intent = getIntent();

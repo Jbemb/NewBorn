@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.newborn.R;
 import com.example.newborn.activity.global.MainActivity;
@@ -39,6 +40,10 @@ public class SleepListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_sleep);
         Stetho.initializeWithDefaults(this);
         sleepList = findViewById(R.id.lv_sleeplist);
+
+        //set babyName
+        final TextView tvBabyName = findViewById(R.id.tv_baby);
+        tvBabyName.setText("Zachary");
 
         Intent intent = getIntent();
         dayStart = (Date)intent.getSerializableExtra("dayStart");

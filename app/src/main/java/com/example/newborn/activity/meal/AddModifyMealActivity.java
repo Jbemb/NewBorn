@@ -60,6 +60,10 @@ public class AddModifyMealActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_modify_meal);
 
+        //set babyName
+        final TextView tvBabyName = findViewById(R.id.tv_baby);
+        tvBabyName.setText("Zachary");
+
         //Initiate the layout variables
         etDate = findViewById(R.id.et_date_add_meal);
         etTime = findViewById(R.id.et_time_add_meal);

@@ -66,6 +66,11 @@ public class RecentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recent);
         Stetho.initializeWithDefaults(this);
+
+        //set babyName
+        final TextView tvBabyName = findViewById(R.id.tv_baby);
+        tvBabyName.setText("Zachary");
+
         //initialize Repos
         mealRepo = new MealDbRepository(this);
         changeRepo = new ChangeDbRepository(this);
