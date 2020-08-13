@@ -31,6 +31,8 @@ public class SleepListActivity extends AppCompatActivity {
     private SleepViewModel sleepVM = null;
     ListView sleepList =null;
     List<Sleep> sleeps = null;
+    Date dayStart = null;
+    Date dayEnd = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,8 +41,8 @@ public class SleepListActivity extends AppCompatActivity {
         sleepList = findViewById(R.id.lv_sleeplist);
 
         Intent intent = getIntent();
-        Date dayStart = (Date)intent.getSerializableExtra("dayStart");
-        Date dayEnd = (Date)intent.getSerializableExtra("dayEnd");
+        dayStart = (Date)intent.getSerializableExtra("dayStart");
+        dayEnd = (Date)intent.getSerializableExtra("dayEnd");
 
 
         SleepViewModel cvm = new ViewModelProvider(this).get(SleepViewModel.class);
@@ -67,8 +69,12 @@ public class SleepListActivity extends AppCompatActivity {
 
     public void OnClickBack(View view) {
         Intent intent = new Intent(this, SummaryDayActivity.class);
+        intent.putExtra("dayStart", dayStart);
+        intent.putExtra("dayEnd", dayEnd);
         startActivity(intent);
     }
+
+
     //TODO links of the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

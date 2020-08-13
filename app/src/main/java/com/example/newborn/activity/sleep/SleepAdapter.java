@@ -15,6 +15,8 @@ import androidx.annotation.Nullable;
 
 import com.example.newborn.R;
 import com.example.newborn.activity.change.AddModifyChangeActivity;
+import com.example.newborn.activity.global.SummaryDayActivity;
+import com.example.newborn.activity.meal.MealListActivity;
 import com.example.newborn.activity.sleep.SleepListActivity;
 import com.example.newborn.model.sleep.Sleep;
 import com.example.newborn.repository.sleep.ISleepRepository;
@@ -22,6 +24,7 @@ import com.example.newborn.repository.sleep.SleepDbRepository;
 import com.facebook.stetho.Stetho;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -83,8 +86,19 @@ public class SleepAdapter extends ArrayAdapter<Sleep> {
             public void onClick(View view) {
                 Sleep sleep = getItem(position);
                 sleepRepo.deleteSleep(sleep);
+
+                Date dayStart = sleep.getStartTime();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(dayStart);
+                SummaryDayActivity.resetToMidnight(cal);
+                dayStart=cal.getTime();
+                Date dayEnd = null;
+                dayEnd = SummaryDayActivity.setDayEnd(cal);
                 Toast.makeText(getContext(), "Supprimé", Toast.LENGTH_LONG).show();
+
                 Intent intent = new Intent(getContext(), SleepListActivity.class);
+                intent.putExtra("dayStart", dayStart);
+                intent.putExtra("dayEnd", dayEnd);
                 getContext().startActivity(intent);
             }
         });

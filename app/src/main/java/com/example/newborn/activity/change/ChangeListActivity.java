@@ -30,7 +30,8 @@ public class ChangeListActivity extends AppCompatActivity {
     private ChangeViewModel changeVM = null;
     ListView changeList =null;
     List<Change> changes = null;
-
+    Date dayStart = null;
+    Date dayEnd = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +41,8 @@ public class ChangeListActivity extends AppCompatActivity {
         changeList = findViewById(R.id.lv_changeList);
 
         Intent intent = getIntent();
-        Date dayStart = (Date)intent.getSerializableExtra("dayStart");
-        Date dayEnd = (Date)intent.getSerializableExtra("dayEnd");
+        dayStart = (Date)intent.getSerializableExtra("dayStart");
+        dayEnd = (Date)intent.getSerializableExtra("dayEnd");
 
 
         ChangeViewModel cvm = new ViewModelProvider(this).get(ChangeViewModel.class);
@@ -95,6 +96,8 @@ public class ChangeListActivity extends AppCompatActivity {
 
     public void OnClickBack(View view) {
         Intent intent = new Intent(this, SummaryDayActivity.class);
+        intent.putExtra("dayStart", dayStart);
+        intent.putExtra("dayEnd", dayEnd);
         startActivity(intent);
     }
 

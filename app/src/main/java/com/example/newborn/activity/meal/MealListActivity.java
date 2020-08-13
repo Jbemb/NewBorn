@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ListView;
@@ -30,6 +31,8 @@ public class MealListActivity extends AppCompatActivity {
     private MealViewModel mealVM = null;
     ListView mealList =null;
     List<Meal> meals = null;
+    Date dayStart = null;
+    Date dayEnd = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +44,8 @@ public class MealListActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        Date dayStart = (Date)intent.getSerializableExtra("dayStart");
-        Date dayEnd = (Date)intent.getSerializableExtra("dayEnd");
+        dayStart = (Date)intent.getSerializableExtra("dayStart");
+        dayEnd = (Date)intent.getSerializableExtra("dayEnd");
 
 
         MealViewModel cvm = new ViewModelProvider(this).get(MealViewModel.class);
@@ -63,9 +66,17 @@ public class MealListActivity extends AppCompatActivity {
 
     public void OnClickBack(View view) {
         Intent intent = new Intent(this, SummaryDayActivity.class);
+        intent.putExtra("dayStart", dayStart);
+        intent.putExtra("dayEnd", dayEnd);
         startActivity(intent);
     }
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
     //TODO links of the menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
