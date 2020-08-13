@@ -10,9 +10,10 @@
         android:id="@+id/tv_Welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="140dp"
         android:text="Bienvenue"
         android:textSize="35dp"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,29 +25,30 @@
         android:gravity="center"
         android:text="Sélectionner ton bébé"
         android:textSize="25dp"
-        android:visibility="invisible"
-        tools:visibility="visible"
+
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_Welcome" />
-    <ListView
-        android:id="@+id/lv_babies"
+    <Button
+        android:id="@+id/btn_child"
         android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_marginTop="110dp"
-        android:layout_marginBottom="150dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        android:text="Zachary"
+        android:textSize="25dp"
+        android:onClick="onClickRecentActivity"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_selectChild">
-    </ListView>
+        app:layout_constraintTop_toBottomOf="@+id/tv_selectChild" />
 
     <ImageButton
         android:id="@+id/btn_new_child"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="460dp"
+        android:layout_marginTop="284dp"
         android:onClick="onClickAddChild"
         android:src="@drawable/add1"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_selectChild" />
