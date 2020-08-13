@@ -51,7 +51,7 @@ public abstract class AppDatabase extends RoomDatabase {
     public static AppDatabase getInstance(Context context){
         if(INSTANCE == null){
             //creation - context (who access it) - this class info - database name
-            INSTANCE = Room.databaseBuilder(context, AppDatabase.class, "izzy_baby.db")
+            INSTANCE = Room.databaseBuilder(context, AppDatabase.class, "izzy_baby11.db")
                     .addCallback(roomFixture)
                     .fallbackToDestructiveMigration()
                     .build();
