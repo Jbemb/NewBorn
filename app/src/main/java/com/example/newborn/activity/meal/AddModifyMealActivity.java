@@ -7,6 +7,8 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -17,6 +19,8 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.newborn.R;
+import com.example.newborn.activity.global.MainActivity;
+import com.example.newborn.activity.global.RecentActivity;
 import com.example.newborn.activity.global.SummaryDayActivity;
 import com.example.newborn.model.meal.Meal;
 import com.example.newborn.view_model.meal.MealViewModel;
@@ -68,8 +72,8 @@ public class AddModifyMealActivity extends AppCompatActivity {
         etDate = findViewById(R.id.et_date_add_meal);
         etTime = findViewById(R.id.et_time_add_meal);
         etQuantity = findViewById(R.id.et_quantity_add_meal);
-        rbLeftBreast = findViewById(R.id.rb_left);
-        rbRightBreast = findViewById(R.id.rb_right);
+        rbRightBreast = findViewById(R.id.rb_right_breast_meal);
+        rbLeftBreast = findViewById(R.id.rb_left_breast_meal);
         tvTitle = findViewById(R.id.et_title_add_meal);
 
         mvm = new ViewModelProvider(this).get(MealViewModel.class);
@@ -220,5 +224,36 @@ public class AddModifyMealActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+    //TODO links of the menu
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_accueil:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_activites_recentes:
+                intent = new Intent(this, RecentActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_bilan:
+                intent = new Intent(this, SummaryDayActivity.class);
+                startActivity(intent);
+                return true;
+//            case R.id.action_parametres:
+//                intent = new Intent(this, ParameterActivity.class);
+//                startActivity(intent);
+//                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

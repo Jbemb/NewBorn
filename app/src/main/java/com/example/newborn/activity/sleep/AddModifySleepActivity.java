@@ -7,6 +7,8 @@ import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -16,6 +18,8 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.newborn.R;
+import com.example.newborn.activity.global.MainActivity;
+import com.example.newborn.activity.global.RecentActivity;
 import com.example.newborn.activity.global.SummaryDayActivity;
 import com.example.newborn.model.sleep.Sleep;
 import com.example.newborn.view_model.sleep.SleepViewModel;
@@ -285,5 +289,36 @@ public class AddModifySleepActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+    //TODO links of the menu
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_accueil:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_activites_recentes:
+                intent = new Intent(this, RecentActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_bilan:
+                intent = new Intent(this, SummaryDayActivity.class);
+                startActivity(intent);
+                return true;
+//            case R.id.action_parametres:
+//                intent = new Intent(this, ParameterActivity.class);
+//                startActivity(intent);
+//                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }
