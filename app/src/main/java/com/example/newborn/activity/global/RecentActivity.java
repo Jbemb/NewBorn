@@ -37,6 +37,7 @@ import com.facebook.stetho.Stetho;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -47,7 +48,7 @@ public class RecentActivity extends AppCompatActivity {
     private boolean isBottle = true;
     //timer sleep
     private Chronometer sleepChrono;
-    private boolean isSleeping;
+    private boolean isSleeping = false;
     private Date newSleepStart;
     private long newSleepDuration;
     SharedPreferences preferences;
@@ -233,8 +234,10 @@ public class RecentActivity extends AppCompatActivity {
             newSleepStart = date;
             //calculate
             //now - start = temps ecoulé
+            Date now = new Date();
+            Long setTimer = now.getTime() - startMillis;
             //reset - start timer
-           // sleepChrono.setBase(SystemClock.elapsedRealtime() - (time.elapse));
+            sleepChrono.setBase(SystemClock.elapsedRealtime() - startMillis);
             sleepChrono.start();
         }
     }
@@ -247,7 +250,7 @@ public class RecentActivity extends AppCompatActivity {
         if(radioId != -1){
             rbBreast = findViewById(radioId);
             String breast = (String) rbBreast.getText();
-            if(breast.equals("Gauche")){
+            if(breast.equals("Sein G")){
                 breast = "left";
             }else{
                 breast = "right";
@@ -301,7 +304,7 @@ public class RecentActivity extends AppCompatActivity {
             Sleep newSleep = new Sleep(baby, newSleepStart, endDate);
             sleepRepo.insertSleep(newSleep);
             Toast.makeText(this, "Success" + newSleep, Toast.LENGTH_LONG).show();
-            preferences.edit().putBoolean("sleeping",false)
+            preferences.edit().putBoolean("sleeping",isSleeping)
                     .putString("startTime","0").apply();
             Intent intent = new Intent(this, RecentActivity.class);
             this.startActivity(intent);

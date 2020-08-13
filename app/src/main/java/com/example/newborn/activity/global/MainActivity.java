@@ -72,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
        }
     }
 
+    public void onClickRecentActivity(View view) {
+        Intent intent = new Intent(this, RecentActivity.class);
+        startActivity(intent);
+    }
+
     public void onClickAddChild(View view) {
     }
 }
