@@ -174,8 +174,8 @@
         android:id="@+id/tv_last_change"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="48dp"
         android:text="Dernier change, il y a:"
         app:layout_constraintLeft_toRightOf="@+id/iv_recent_change"
         app:layout_constraintTop_toBottomOf="@+id/et_meal_quantity" />
@@ -211,7 +211,7 @@
         android:layout_width="79dp"
         android:layout_height="30dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="11dp"
+        android:layout_marginTop="36dp"
         android:text="selles"
         app:layout_constraintLeft_toRightOf="@+id/btn_new_change"
         app:layout_constraintTop_toBottomOf="@id/tv_change_time" />
@@ -242,20 +242,21 @@
         android:id="@+id/tv_last_sleep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
         android:text="Dernier dodo, il y a:"
         app:layout_constraintLeft_toLeftOf="@+id/tv_sleep_time"
-        app:layout_constraintBottom_toTopOf="@+id/tv_sleep_time"/>
+        app:layout_constraintTop_toBottomOf="@+id/cb_selle" />
 
     <TextView
         android:id="@+id/tv_sleep_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:gravity="center"
         android:text="XX:XX"
-        android:textSize="25dp"
         android:textColor="@android:color/holo_purple"
+        android:textSize="25dp"
         app:layout_constraintLeft_toRightOf="@id/iv_recent_sleep"
         app:layout_constraintTop_toTopOf="@id/iv_recent_sleep" />
 
@@ -275,8 +276,8 @@
         android:id="@+id/chrono_sleep_count"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="36dp"
         android:text="zz:zz"
         android:textColor="@android:color/holo_blue_light"
         android:textSize="25dp"
