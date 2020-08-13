@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 
 import com.example.newborn.R;
 
+import com.example.newborn.activity.global.SummaryDayActivity;
 import com.example.newborn.activity.meal.AddModifyMealActivity;
 import com.example.newborn.activity.meal.MealListActivity;
 import com.example.newborn.model.meal.Meal;
@@ -23,6 +24,7 @@ import com.example.newborn.repository.meal.MealDbRepository;
 import com.facebook.stetho.Stetho;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -82,8 +84,19 @@ public class MealAdapter extends ArrayAdapter<Meal> {
             public void onClick(View view) {
                 Meal meal = getItem(position);
                 mealRepo.deleteMeal(meal);
+
+                Date dayStart = meal.getTime();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(dayStart);
+                SummaryDayActivity.resetToMidnight(cal);
+                dayStart=cal.getTime();
+                Date dayEnd = null;
+                dayEnd = SummaryDayActivity.setDayEnd(cal);
                 Toast.makeText(getContext(), "Supprimé", Toast.LENGTH_LONG).show();
+
                 Intent intent = new Intent(getContext(), MealListActivity.class);
+                intent.putExtra("dayStart", dayStart);
+                intent.putExtra("dayEnd", dayEnd);
                 getContext().startActivity(intent);
             }
         });

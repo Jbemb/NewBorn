@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModelProvider;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageButton;
@@ -130,11 +132,8 @@ public class SummaryDayActivity extends AppCompatActivity {
                 cal.set(Calendar.MONTH, month);
                 cal.set(Calendar.DAY_OF_MONTH, day);
                 SummaryDayActivity.resetToMidnight(cal);
-                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 dayStart = cal.getTime();
-                cal.add(Calendar.HOUR_OF_DAY, 23);
-                cal.add(Calendar.MINUTE, 59);
-                dayEnd = cal.getTime();
+                dayEnd = SummaryDayActivity.setDayEnd(cal);
 
                 Intent intentSummary = new Intent(SummaryDayActivity.this, SummaryDayActivity.class);
                 intentSummary.putExtra("dayStart", dayStart);
@@ -189,5 +188,44 @@ public class SummaryDayActivity extends AppCompatActivity {
         cal.set(Calendar.MINUTE, 0);
         cal.set(Calendar.SECOND, 0);
         cal.set(Calendar.MILLISECOND, 0);
+    }
+
+    public static Date setDayEnd (Calendar cal) {
+        Date dayEnd = null;
+        cal.add(Calendar.HOUR_OF_DAY, 23);
+        cal.add(Calendar.MINUTE, 59);
+        dayEnd = cal.getTime();
+        return dayEnd;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+    //TODO links of the menu
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.action_accueil:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_activites_recentes:
+                intent = new Intent(this, RecentActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_bilan:
+                intent = new Intent(this, SummaryDayActivity.class);
+                startActivity(intent);
+                return true;
+//            case R.id.action_parametres:
+//                intent = new Intent(this, ParameterActivity.class);
+//                startActivity(intent);
+//                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 }

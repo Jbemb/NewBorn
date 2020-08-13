@@ -17,12 +17,14 @@ import androidx.annotation.Nullable;
 import com.example.newborn.R;
 import com.example.newborn.activity.change.AddModifyChangeActivity;
 import com.example.newborn.activity.change.ChangeListActivity;
+import com.example.newborn.activity.global.SummaryDayActivity;
 import com.example.newborn.model.change.Change;
 import com.example.newborn.repository.change.ChangeDbRepository;
 import com.example.newborn.repository.change.IChangeRepository;
 import com.facebook.stetho.Stetho;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -55,7 +57,7 @@ public class ChangeAdapter extends ArrayAdapter<Change> {
 
         Date dateTime = change.getChangeTime();
         //set date
-        String dateString = new SimpleDateFormat("dd/MM/yyyy").format(dateTime);
+        final String dateString = new SimpleDateFormat("dd/MM/yyyy").format(dateTime);
         tvDate.setText(dateString);
         //set time
         String timeString = new SimpleDateFormat("HH:mm").format(dateTime);
@@ -72,7 +74,18 @@ public class ChangeAdapter extends ArrayAdapter<Change> {
                 Change change = getItem(position);
                 changeRepo.deleteChange(change);
                 Toast.makeText(getContext(), "Supprimé", Toast.LENGTH_LONG).show();
+
+                Date dayStart = change.getChangeTime();
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(dayStart);
+                SummaryDayActivity.resetToMidnight(cal);
+                dayStart=cal.getTime();
+                Date dayEnd = null;
+                dayEnd = SummaryDayActivity.setDayEnd(cal);
+
                 Intent intent = new Intent(getContext(), ChangeListActivity.class);
+                intent.putExtra("dayStart", dayStart);
+                intent.putExtra("dayEnd", dayEnd);
                 getContext().startActivity(intent);
             }
         });
