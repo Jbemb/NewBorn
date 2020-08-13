@@ -218,7 +218,8 @@ public class RecentActivity extends AppCompatActivity {
         super.onStop();
         //time since
         //get starttime turn to milliseconds
-        long startMillis = sleepChrono.getBase();
+        //long startMillis = sleepChrono.getBase();
+        long startMillis = newSleepStart.getTime();
         SharedPreferences.Editor editor = preferences.edit();
         editor.putLong("startTime", startMillis);
         editor.putBoolean("sleeping", isSleeping);
@@ -240,9 +241,9 @@ public class RecentActivity extends AppCompatActivity {
             //calculate
             //now - start = temps ecoulé
             Date now = new Date();
-            Long setTimer = now.getTime() - startMillis;
+            Long timeSince = now.getTime() - startMillis;
             //reset - start timer
-            sleepChrono.setBase(SystemClock.elapsedRealtime() - startMillis);
+            sleepChrono.setBase(SystemClock.elapsedRealtime() - timeSince);
             sleepChrono.start();
         }
     }
