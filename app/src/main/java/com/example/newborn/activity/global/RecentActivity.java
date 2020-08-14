@@ -45,6 +45,7 @@ public class RecentActivity extends AppCompatActivity {
     //baby name to change later and other "parameters"
     private String baby = "Zachary";
     private boolean isBreastFeeding = true;
+    private String test = null;
     private boolean isBottle = true;
     //timer sleep
     private Chronometer sleepChrono;
@@ -212,27 +213,12 @@ public class RecentActivity extends AppCompatActivity {
         });
 
     }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        //time since
-        //get starttime turn to milliseconds
-        //long startMillis = sleepChrono.getBase();
-        long startMillis = newSleepStart.getTime();
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.putLong("startTime", startMillis);
-        editor.putBoolean("sleeping", isSleeping);
-        editor.apply();
-        Toast.makeText(this, "sleep" + startMillis, Toast.LENGTH_LONG).show();
-    }
+    
 
     @Override
     protected void onStart() {
         super.onStart();
-
         isSleeping = preferences.getBoolean("sleeping", false);
-        Toast.makeText(this, "sleep" + isSleeping, Toast.LENGTH_LONG).show();
         if (isSleeping) {
             long startMillis = preferences.getLong("startTime", System.currentTimeMillis());
             //reset newSleepStart
@@ -293,6 +279,11 @@ public class RecentActivity extends AppCompatActivity {
             sleepChrono.start();
             isSleeping = true;
             newSleepStart= new Date();
+            long startMillis = newSleepStart.getTime();
+            SharedPreferences.Editor editor = preferences.edit();
+            editor.putLong("startTime", startMillis);
+            editor.putBoolean("sleeping", isSleeping);
+            editor.apply();
         }
     }
 
@@ -309,7 +300,7 @@ public class RecentActivity extends AppCompatActivity {
             Date endDate = new Date(endTimeMilliseconds);
             Sleep newSleep = new Sleep(baby, newSleepStart, endDate);
             sleepRepo.insertSleep(newSleep);
-            Toast.makeText(this, "Success" + newSleep, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "ajouté" , Toast.LENGTH_LONG).show();
             preferences.edit().putBoolean("sleeping",isSleeping)
                     .putString("startTime","0").apply();
             Intent intent = new Intent(this, RecentActivity.class);
